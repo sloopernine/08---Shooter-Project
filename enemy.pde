@@ -8,11 +8,9 @@ class Enemy{
 
 	float collider = 30;
 
-	float speed = 10;
+	float ySpeed = 10f;
 
 	boolean alive;
-
-	boolean moveRight;
 
 	Enemy(float xPos, float yPos){
 
@@ -22,13 +20,7 @@ class Enemy{
 
 	void Update(){
 
-		if(moveRight){
-
-
-		} else {
-
-
-		}
+		position.y += ySpeed * deltaTime;
 	}
 
 	void Draw(){

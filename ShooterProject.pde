@@ -6,7 +6,7 @@ EnemyManager enemyManager;
 
 void settings()
 {
-	size(512, 512);
+	size(1024, 768);
 
 	playerChar = new Player(width/2, height-height/5);
 	enemyManager = new EnemyManager();

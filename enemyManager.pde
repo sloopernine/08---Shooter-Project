@@ -1,9 +1,14 @@
 class EnemyManager{
 
-	Enemy[] enemies;
-	int numberOfEnemies = 8;
+	Enemy[][] enemies;
+	int enemiesPerLine = 8;
+	int numberOfRows = 10;
 
-	int spaceOffset = 10;
+	int xSpaceOffset = 60;
+	int yOffset = 500;
+
+	float xPosWall = 20;
+	float xPos = width/2;
 
 	EnemyManager(){
 
@@ -12,19 +17,24 @@ class EnemyManager{
 
 	void Setup(){
 		
-		enemies = new Enemy[numberOfEnemies];
+		enemies = new Enemy[enemiesPerLine][numberOfRows];
 
-		for(int i = 0; i < enemies.length; i++){
+		for(int y = 0; y < numberOfRows; y++){
+			for(int x = 0; x < enemiesPerLine; x++){
 
-			enemies[i] = new Enemy((i * 60)+40, 30);
+				enemies[x][y] = new Enemy((x * xSpaceOffset) + width/2 - enemiesPerLine * xSpaceOffset / 2, (y * xSpaceOffset) - yOffset);
+			}
 		}
 	}
 
 	void Update(){
-	
-		for(int i = 0; i < enemies.length; i++){
 
-			enemies[i].Draw();
+		for(int y = 0; y < numberOfRows; y++){
+			for(int x = 0; x < enemiesPerLine; x++){
+
+				enemies[x][y].Update();
+				enemies[x][y].Draw();
+			}
 		}
 	}
 }

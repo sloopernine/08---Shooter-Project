@@ -1,17 +1,29 @@
-Enemy[] enemies;
-int numberOfEnemies = 20;
+class EnemyManager{
 
-void Setup(){
-	
-	enemies = Enemy[numberOfEnemies];
+	Enemy[] enemies;
+	int numberOfEnemies = 20;
 
-	for(int i = 0; i < enemies.length; i++){
+	EnemyManager(){
 
-		enemies[i] = new Enemy();
+		Setup();
 	}
-}
 
-void Update(){
+	void Setup(){
+		
+		enemies = new Enemy[numberOfEnemies];
+
+		for(int i = 0; i < enemies.length; i++){
+
+			enemies[i] = new Enemy(i * 5, 0);
+		}
+	}
+
+	void Update(){
 	
-	
+		for(int i = 0; i < enemies.length; i++){
+
+			
+			enemies[i].Draw();
+		}
+	}
 }

@@ -1,11 +1,14 @@
 float deltaTime;
 float time;
 Player playerChar;
+EnemyManager enemyManager;
 
 void settings()
 {
 	size(512, 512);
+
 	playerChar = new Player(width/2, height-height/5);
+	enemyManager = new EnemyManager();
 }
 
 void draw()
@@ -16,6 +19,8 @@ void draw()
 
     playerChar.update();
     playerChar.draw();
+
+    enemyManager.Update();
 
     time = currentTime;
 

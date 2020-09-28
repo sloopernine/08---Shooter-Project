@@ -17,11 +17,14 @@ public class ShooterProject extends PApplet {
 float deltaTime;
 float time;
 Player playerChar;
+EnemyManager enemyManager;
 
 public void settings()
 {
 	size(512, 512);
+
 	playerChar = new Player(width/2, height-height/5);
+	enemyManager = new EnemyManager();
 }
 
 public void draw()
@@ -33,8 +36,107 @@ public void draw()
     playerChar.update();
     playerChar.draw();
 
+    enemyManager.Update();
+
     time = currentTime;
 
+}
+public void setup(){
+
+
+}
+class Enemy{
+
+	PVector position;
+
+	int cColor;
+
+	int health;
+
+	float collider;
+
+	float speed = 10;
+
+	boolean alive;
+
+	boolean moveRight;
+
+	Enemy(float xPos, float yPos){
+
+		position = new PVector(xPos, yPos);
+		cColor = color(255, 0, 0);
+	}
+
+	public void Update(){
+
+		if(moveRight){
+
+
+		} else {
+
+
+		}
+	}
+
+	public void Draw(){
+	
+		fill(cColor);
+		ellipse(position.x, position.y, collider, collider);
+	}
+}
+
+
+
+
+
+class EnemyManager{
+
+	Enemy[] enemies;
+	int numberOfEnemies = 20;
+
+	EnemyManager(){
+
+		Setup();
+	}
+
+	public void Setup(){
+		
+		enemies = new Enemy[numberOfEnemies];
+
+		for(int i = 0; i < enemies.length; i++){
+
+			enemies[i] = new Enemy(i * 5, 0);
+		}
+	}
+
+	public void Update(){
+	
+		for(int i = 0; i < enemies.length; i++){
+
+			
+			enemies[i].Draw();
+		}
+	}
+}
+boolean moveRight;
+boolean moveLeft;
+boolean gravityOn = false;
+PVector vectorInput = new PVector(0,0);
+
+public void keyPressed()
+{
+	if (key == 'a')
+		moveLeft = true;
+	else if (key == 'd')
+		moveRight = true;
+}
+
+public void keyReleased()
+{
+	if (key == 'a')
+		moveLeft = false;
+	else if (key == 'd')
+		moveRight = false;
 }
 class Player
 {
@@ -100,46 +202,6 @@ public void draw()
 	ellipse(charLocation.x, charLocation.y, ballDiameter, ballDiameter);
 }
 
-}
-public void setup(){
-
-
-}
-class enemy{
-
-	PVector position;
-
-	int health;
-
-	public void draw(){
-	
-	
-	}
-}
-
-
-
-
-
-boolean moveRight;
-boolean moveLeft;
-boolean gravityOn = false;
-PVector vectorInput = new PVector(0,0);
-
-public void keyPressed()
-{
-	if (key == 'a')
-		moveLeft = true;
-	else if (key == 'd')
-		moveRight = true;
-}
-
-public void keyReleased()
-{
-	if (key == 'a')
-		moveLeft = false;
-	else if (key == 'd')
-		moveRight = false;
 }
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "ShooterProject" };

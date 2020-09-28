@@ -17,6 +17,7 @@ public class ShooterProject extends PApplet {
 float deltaTime;
 float time;
 Player playerChar;
+
 EnemyManager enemyManager;
 
 public void settings()
@@ -41,9 +42,29 @@ public void draw()
     time = currentTime;
 
 }
-public void setup(){
+class Bullet
+{
+	PVector velocity;
+	PVector position;
+	float speed = 1;
 
+	
+	public Bullet(int x, int y)
+	{
+		position = new PVector(x, y);
 
+		velocity = new PVector(0, 0);
+	}
+
+	public void update()
+	{
+		position.add(velocity.mult(deltaTime));
+	}
+
+	public void draw()
+	{
+		ellipse(position.x, position.y, 2, 2);
+	}
 }
 class Enemy{
 
@@ -129,6 +150,9 @@ public void keyPressed()
 		moveLeft = true;
 	else if (key == 'd')
 		moveRight = true;
+
+	if (key == 'f')
+		shoot();
 }
 
 public void keyReleased()
@@ -141,19 +165,19 @@ public void keyReleased()
 class Player
 {
 
-PVector velocity;
-PVector charLocation;
-float topSpeed = 7;
-float decelerationSpeed = 0.85f;
-int ballDiameter = 20;
-float xInput = 0;
-float yInput = 0;
-float v = 1;
+	PVector velocity;
+	PVector position;
+	float topSpeed = 7;
+	float decelerationSpeed = 0.85f;
+	int ballDiameter = 20;
+	float xInput = 0;
+	float yInput = 0;
+	float v = 1;
 
 public Player(int x, int y)
 {
 	//ellipseMode(CENTER);
-	charLocation = new PVector(x, y);
+	position = new PVector(x, y);
 
 	velocity = new PVector(0,0);
 	xInput = 0;
@@ -188,18 +212,18 @@ public void update()
     velocity.add(acceleration.mult(deltaTime));
 
   xInput = constrain(xInput, -topSpeed, topSpeed);
-  charLocation.y = constrain(charLocation.y, 0+ballDiameter/2, height-ballDiameter/2);
-  charLocation.x = constrain(charLocation.x, 0+ballDiameter, width-ballDiameter);
+  position.y = constrain(position.y, 0+ballDiameter/2, height-ballDiameter/2);
+  position.x = constrain(position.x, 0+ballDiameter, width-ballDiameter);
 
   //Limits the velocity vector and adds to vector to the character location vector.
   velocity.limit(topSpeed);
-  charLocation.add(velocity);
+  position.add(velocity);
 }
 
 public void draw()
 {
 	fill(255, 255, 255);
-	ellipse(charLocation.x, charLocation.y, ballDiameter, ballDiameter);
+	ellipse(position.x, position.y, ballDiameter, ballDiameter);
 }
 
 }

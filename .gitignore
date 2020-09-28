@@ -6,3 +6,5 @@ application.windows32/
 *.java
 *.exe
 *.jar
+*.class
+*.java

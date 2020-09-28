@@ -11,7 +11,9 @@ void keyPressed()
 		moveRight = true;
 
 	if (key == 'f')
+	{
 		//Shoot
+	}
 }
 
 void keyReleased()

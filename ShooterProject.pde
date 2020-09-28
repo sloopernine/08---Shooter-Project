@@ -1,6 +1,7 @@
 float deltaTime;
 float time;
 Player playerChar;
+Bullet bullet;
 
 void settings()
 {

@@ -9,6 +9,9 @@ void keyPressed()
 		moveLeft = true;
 	else if (key == 'd')
 		moveRight = true;
+
+	if (key == 'f')
+		shoot();
 }
 
 void keyReleased()

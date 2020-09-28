@@ -1,19 +1,19 @@
 class Player
 {
 
-PVector velocity;
-PVector charLocation;
-float topSpeed = 7;
-float decelerationSpeed = 0.85;
-int ballDiameter = 20;
-float xInput = 0;
-float yInput = 0;
-float v = 1;
+	PVector velocity;
+	PVector position;
+	float topSpeed = 7;
+	float decelerationSpeed = 0.85;
+	int ballDiameter = 20;
+	float xInput = 0;
+	float yInput = 0;
+	float v = 1;
 
 public Player(int x, int y)
 {
 	//ellipseMode(CENTER);
-	charLocation = new PVector(x, y);
+	position = new PVector(x, y);
 
 	velocity = new PVector(0,0);
 	xInput = 0;
@@ -48,18 +48,18 @@ void update()
     velocity.add(acceleration.mult(deltaTime));
 
   xInput = constrain(xInput, -topSpeed, topSpeed);
-  charLocation.y = constrain(charLocation.y, 0+ballDiameter/2, height-ballDiameter/2);
-  charLocation.x = constrain(charLocation.x, 0+ballDiameter, width-ballDiameter);
+  position.y = constrain(position.y, 0+ballDiameter/2, height-ballDiameter/2);
+  position.x = constrain(position.x, 0+ballDiameter, width-ballDiameter);
 
   //Limits the velocity vector and adds to vector to the character location vector.
   velocity.limit(topSpeed);
-  charLocation.add(velocity);
+  position.add(velocity);
 }
 
 void draw()
 {
 	fill(255, 255, 255);
-	ellipse(charLocation.x, charLocation.y, ballDiameter, ballDiameter);
+	ellipse(position.x, position.y, ballDiameter, ballDiameter);
 }
 
 }

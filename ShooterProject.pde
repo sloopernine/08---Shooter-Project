@@ -1,6 +1,7 @@
 float deltaTime;
 float time;
 Player playerChar;
+
 EnemyManager enemyManager;
 
 void settings()

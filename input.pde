@@ -1,9 +1,20 @@
-PVector input = new PVector(0,0);
+boolean moveRight;
+boolean moveLeft;
+boolean gravityOn = false;
+PVector vectorInput = new PVector(0,0);
 
-void Update()
+void keyPressed()
 {
-	input.x = int(key =='d') - int(key == 'a');
-	input.y = int(key =='s') - int(key == 'w');
-	println(input);
+	if (key == 'a')
+		moveLeft = true;
+	else if (key == 'd')
+		moveRight = true;
 }
 
+void keyReleased()
+{
+	if (key == 'a')
+		moveLeft = false;
+	else if (key == 'd')
+		moveRight = false;
+}

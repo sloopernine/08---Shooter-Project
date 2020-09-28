@@ -1,7 +1,9 @@
 class EnemyManager{
 
 	Enemy[] enemies;
-	int numberOfEnemies = 20;
+	int numberOfEnemies = 8;
+
+	int spaceOffset = 10;
 
 	EnemyManager(){
 
@@ -14,7 +16,7 @@ class EnemyManager{
 
 		for(int i = 0; i < enemies.length; i++){
 
-			enemies[i] = new Enemy(i * 5, 0);
+			enemies[i] = new Enemy((i * 60)+40, 30);
 		}
 	}
 
@@ -22,7 +24,6 @@ class EnemyManager{
 	
 		for(int i = 0; i < enemies.length; i++){
 
-			
 			enemies[i].Draw();
 		}
 	}

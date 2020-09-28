@@ -6,7 +6,7 @@ class Enemy{
 
 	int health;
 
-	float collider;
+	float collider = 30;
 
 	float speed = 10;
 

@@ -1,12 +1,25 @@
-class enemy{
+class Enemy{
 
 	PVector position;
 
 	int health;
 
-	void draw(){
+	float collider;
+
+	Enemy(float xPos, float yPos){
+
+		position = new PVector(xPos, yPos);
+
+	}
+
+	void Update(){
+
+
+	}
+
+	void Draw(){
 	
-	
+		ellipse(position.x, position.y, collider, collider);
 	}
 }
 

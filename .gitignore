@@ -1,4 +1,3 @@
-!/Sprites/**
 build-tmp/
 application.windows64/
 application.windows32/
@@ -9,3 +8,4 @@ application.windows32/
 *.jar
 *.class
 *.java
+!/Sprites/**

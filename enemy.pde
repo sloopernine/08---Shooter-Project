@@ -1,5 +1,7 @@
 class Enemy extends Character{
 
+	PImage sprite;
+
 	float collider = 30;
 
 	float xSpeed = 40;
@@ -9,6 +11,8 @@ class Enemy extends Character{
 
 	Enemy(float xPos, float yPos){
 		super();
+
+		sprite = loadImage("data/sprites/shipBase.png");
 
 		position = new PVector(xPos, yPos);
 		baseColor = color(255, 0, 0);
@@ -29,8 +33,15 @@ class Enemy extends Character{
 		
 		if(alive){
 
-			fill(baseColor);
-			ellipse(position.x, position.y, collider, collider);
+			if(sprite == null){
+
+				fill(baseColor);
+				ellipse(position.x, position.y, collider, collider);
+
+			} else {
+
+				image(sprite, position.x - 16, position.y - 16);
+			}
 		}
 	}
 }

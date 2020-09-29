@@ -3,23 +3,24 @@ class Bullet
 	//Ansvarig: Johan B
 	PVector velocity;
 	PVector position;
-	float speed = 1;
-	float bulletSize = 2;
+	float speed = 5;
+	float bulletSize = 5;
 
 	
 	public Bullet(int x, int y)
 	{
 		position = new PVector(x, y);
 
-		velocity = new PVector(0, 0);
+		velocity = new PVector(0, -1);
 	}
 
 	void update()
 	{
 		PVector bulletFlight = new PVector(0,0);
-		bulletFlight = velocity.mult(deltaTime);
+		bulletFlight = velocity.mult(deltaTime).normalize();
 
 		velocity.add(bulletFlight.mult(speed));
+		position.add(velocity);
 	}
 
 	void draw()

@@ -1,6 +1,7 @@
 float deltaTime;
 float time;
 Player playerChar;
+BulletManager bulletManager;
 
 EnemyManager enemyManager;
 
@@ -10,6 +11,7 @@ void settings()
 
 	playerChar = new Player(width/2, height-height/5);
 	enemyManager = new EnemyManager();
+	bulletManager = new BulletManager();
 }
 
 void draw()
@@ -21,7 +23,14 @@ void draw()
     playerChar.update();
     playerChar.draw();
 
+    bulletManager.draw();
+
     enemyManager.Update();
+
+    if (keyPressed && key == 32) 
+  	{  
+      	bulletManager.spawnBullet(int(playerChar.position.x), int(playerChar.position.y+2));
+  	}
 
     time = currentTime;
 

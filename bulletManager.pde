@@ -1,21 +1,26 @@
-class bulletManager
+class BulletManager
 {
 	//Ansvarig: Johan B
 	Bullet[] bullets;
 	Player player;
+
+	BulletManager()
+	{
+		setup();
+	}
 
 	void setup()
 	{
  	   bullets = new Bullet[10];
 	}
 
-	void spawnBullet()
+	void spawnBullet(int x, int y)
 	{
 		for (int i = 0; i < bullets.length; ++i) 
       	{
         	if (bullets[i] == null) 
         	{
-          	bullets[i] = new Bullet(int(player.position.x), int(player.position.y+2));
+          	bullets[i] = new Bullet(x, y);
           	//we are done, break/quit the loop.
           	break;
        		}
@@ -35,7 +40,7 @@ class bulletManager
       		//No bullet, skip to the next one.
       		continue;
     		}
-    	else
+    		else
     		{
     	  //found a bullet, update it.
     	  	bullets[i].update();
@@ -44,10 +49,6 @@ class bulletManager
     	}
 	
   		//Spawn new bullet it we press "space-bar"
-  		if (keyPressed && key == 32) 
-  		{  
-      		spawnBullet();
-  		}
   	}
 }
 

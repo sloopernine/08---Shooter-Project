@@ -17,7 +17,7 @@ class GameObject{
 		active = true;
 	}
 
-	boolean roundCollision(GameObject obj){
+	boolean Collision(GameObject obj){
 
   		float maxDistance = obj.collider + collider;
 
@@ -33,4 +33,23 @@ class GameObject{
 			return true;
   		}
 	}
+
+	/*
+	GameObject GetObjectCollision(GameObject obj){
+
+  		float maxDistance = obj.collider + collider;
+
+  		if(abs(obj.position.x - position.x) > maxDistance ||  
+	   		abs(obj.position.y - position.y) > maxDistance){
+	    	
+	    	return null;
+	  	} else if(dist(obj.position.x, obj.position.y, position.x, position.y) > maxDistance){
+	    
+	    	return null;
+		} else {
+		
+			return this.GameObject;
+  		}
+	}
+	*/
 }

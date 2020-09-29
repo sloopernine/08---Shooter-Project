@@ -1,7 +1,5 @@
 class Enemy extends Character{
 
-	PVector position;
-
 	float collider = 30;
 
 	float ySpeed = 10f;
@@ -13,17 +11,25 @@ class Enemy extends Character{
 
 		position = new PVector(xPos, yPos);
 		baseColor = color(255, 0, 0);
+
+		alive = true;
 	}
 
 	void Update(){
 
-		position.y += ySpeed * deltaTime;
+		if(alive){
+
+			position.y += ySpeed * deltaTime;
+		}
 	}
 
 	void Draw(){
-	
-		fill(baseColor);
-		ellipse(position.x, position.y, collider, collider);
+		
+		if(alive){
+
+			fill(baseColor);
+			ellipse(position.x, position.y, collider, collider);
+		}
 	}
 }
 

@@ -36,10 +36,9 @@ class GameObject{
   		}
 	}
 
-	/*
 	GameObject GetObjectCollision(GameObject obj){
 
-  		float maxDistance = obj.collider + collider;
+  		float maxDistance = obj.collider/2 + collider/2;
 
   		if(abs(obj.position.x - position.x) > maxDistance ||  
 	   		abs(obj.position.y - position.y) > maxDistance){
@@ -50,10 +49,10 @@ class GameObject{
 	    	return null;
 		} else {
 		
-			return GameObject;
+			return this;
   		}
 	}
-	*/
+	
 	void SetDirection(PVector dir){
 
 		direction = dir;

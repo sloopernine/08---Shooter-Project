@@ -1,5 +1,6 @@
 class Bullet
 {
+	//Ansvarig: Johan B
 	PVector velocity;
 	PVector position;
 	float speed = 1;

@@ -1,6 +1,7 @@
 float deltaTime;
 float time;
 Player playerChar;
+bulletManager bullets;
 
 EnemyManager enemyManager;
 
@@ -20,6 +21,8 @@ void draw()
 
     playerChar.update();
     playerChar.draw();
+
+    bullets.draw();
 
     enemyManager.Update();
 

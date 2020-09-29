@@ -1,6 +1,8 @@
 class bulletManager
 {
+	//Ansvarig: Johan B
 	Bullet[] bullets;
+	Player player;
 
 	void setup()
 	{
@@ -9,11 +11,11 @@ class bulletManager
 
 	void spawnBullet()
 	{
-		for (int i = 0; bullets.length; i++) 
+		for (int i = 0; i < bullets.length; ++i) 
       	{
         	if (bullets[i] == null) 
         	{
-          	bullets[i] = new Bullet(player.position.x, player.position.y+2);
+          	bullets[i] = new Bullet(int(player.position.x), int(player.position.y+2));
           	//we are done, break/quit the loop.
           	break;
        		}
@@ -26,7 +28,7 @@ class bulletManager
 	void draw() 
 	{
   	//Update bullets
-  		for (int i = 0; bullets.length; i++) 
+  		for (int i = 0; i < bullets.length; i++) 
   		{
     		if (bullets[i] == null) 
     		{
@@ -36,6 +38,8 @@ class bulletManager
     	else
     		{
     	  //found a bullet, update it.
+    	  	bullets[i].update();
+    	  	bullets[i].draw();
     		}
     	}
 	

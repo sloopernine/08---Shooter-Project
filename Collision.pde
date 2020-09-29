@@ -1,6 +1,6 @@
 //Check collision, 2 circles objects
 //function will return true (collision) or false (no collision)
-boolean roundCollision(Character one, Character two)
+/*boolean roundCollision(Character one, Character two)
 {
   float maxDistance = one.size + two.size;
 
@@ -21,4 +21,4 @@ boolean roundCollision(Character one, Character two)
   {
    return true;
   }
-}
+}*/

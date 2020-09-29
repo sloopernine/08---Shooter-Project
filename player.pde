@@ -1,6 +1,6 @@
 class Player
 {
-
+	//Ansvarig: Johan B
 	PVector velocity;
 	PVector position;
 	float topSpeed = 7;

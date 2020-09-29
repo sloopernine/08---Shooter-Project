@@ -22,7 +22,7 @@ class Enemy extends Character{
 
 	void Draw(){
 	
-		fill(cColor);
+		fill(baseColor);
 		ellipse(position.x, position.y, collider, collider);
 	}
 }

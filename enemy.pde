@@ -1,10 +1,6 @@
-class Enemy{
+class Enemy extends Character{
 
 	PVector position;
-
-	color cColor;
-
-	int health;
 
 	float collider = 30;
 
@@ -13,9 +9,10 @@ class Enemy{
 	boolean alive;
 
 	Enemy(float xPos, float yPos){
+		super();
 
 		position = new PVector(xPos, yPos);
-		cColor = color(255, 0, 0);
+		baseColor = color(255, 0, 0);
 	}
 
 	void Update(){

@@ -1,7 +1,3 @@
-import sprites.utils.*;
-import sprites.maths.*;
-import sprites.*;
-
 float deltaTime;
 float time;
 Player playerChar;

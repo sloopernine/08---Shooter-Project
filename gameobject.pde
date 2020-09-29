@@ -2,6 +2,7 @@ class GameObject{
 	
 	PVector position;
 	PVector velocity;
+	PVector direction;
 
 	color baseColor;
 
@@ -13,13 +14,14 @@ class GameObject{
 
 		position = new PVector(0, 0);
 		velocity = new PVector(0, 0);
+		direction = new PVector(0, 0);
 
 		active = true;
 	}
 
 	boolean Collision(GameObject obj){
 
-  		float maxDistance = obj.collider + collider;
+  		float maxDistance = obj.collider/2 + collider/2;
 
   		if(abs(obj.position.x - position.x) > maxDistance ||  
 	   		abs(obj.position.y - position.y) > maxDistance){
@@ -48,8 +50,12 @@ class GameObject{
 	    	return null;
 		} else {
 		
-			return this.GameObject;
+			return GameObject;
   		}
 	}
 	*/
+	void SetDirection(PVector dir){
+
+		direction = dir;
+	}
 }

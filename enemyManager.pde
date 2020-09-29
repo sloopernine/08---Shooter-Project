@@ -1,14 +1,16 @@
 class EnemyManager{
 
 	Enemy[][] enemies;
+	PVector[] rowDirection;
 	int enemiesPerLine = 8;
 	int numberOfRows = 10;
 
 	int xSpaceOffset = 60;
 	int yOffset = 500;
 
-	float xPosWall = 20;
-	float xPos = width/2;
+	float xWall = 40;
+
+	float xCenter = width/2;
 
 	EnemyManager(){
 
@@ -18,11 +20,17 @@ class EnemyManager{
 	void Setup(){
 		
 		enemies = new Enemy[enemiesPerLine][numberOfRows];
+		rowDirection = new PVector[numberOfRows]; 
+
+		for(int i = 0; i < rowDirection.length; i++){
+
+			rowDirection[i] = new PVector(-1, 0);
+		}
 
 		for(int y = 0; y < numberOfRows; y++){
 			for(int x = 0; x < enemiesPerLine; x++){
 
-				enemies[x][y] = new Enemy((x * xSpaceOffset) + width/2 - enemiesPerLine * xSpaceOffset / 2, (y * xSpaceOffset) - yOffset);
+				enemies[x][y] = new Enemy((x * xSpaceOffset) + xCenter - enemiesPerLine * xSpaceOffset / 2, (y * xSpaceOffset) - yOffset);
 			}
 		}
 	}
@@ -32,6 +40,17 @@ class EnemyManager{
 		for(int y = 0; y < numberOfRows; y++){
 			for(int x = 0; x < enemiesPerLine; x++){
 
+				if(x == 0 && enemies[x][y].position.x < xWall){
+
+					rowDirection[y] = new PVector(1, 0);
+				}
+
+				if(x == enemiesPerLine-1 && enemies[x][y].position.x > width - xWall){
+
+					rowDirection[y] = new PVector(-1, 0);
+				}
+
+				enemies[x][y].SetDirection(rowDirection[y]);
 				enemies[x][y].Update();
 				enemies[x][y].Draw();
 			}

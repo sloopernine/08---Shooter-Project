@@ -2,7 +2,8 @@ class Enemy extends Character{
 
 	float collider = 30;
 
-	float ySpeed = 10f;
+	float xSpeed = 40;
+	float ySpeed = 10;
 
 	boolean alive;
 
@@ -19,6 +20,7 @@ class Enemy extends Character{
 
 		if(alive){
 
+			position.x += (direction.x * xSpeed) * deltaTime;
 			position.y += ySpeed * deltaTime;
 		}
 	}

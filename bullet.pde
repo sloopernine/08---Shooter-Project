@@ -3,6 +3,7 @@ class Bullet
 	PVector velocity;
 	PVector position;
 	float speed = 1;
+	float bulletSize = 2;
 
 	
 	public Bullet(int x, int y)
@@ -14,11 +15,14 @@ class Bullet
 
 	void update()
 	{
-		position.add(velocity.mult(deltaTime));
+		PVector bulletFlight = new PVector(0,0);
+		bulletFlight = velocity.mult(deltaTime);
+
+		velocity.add(bulletFlight.mult(speed));
 	}
 
 	void draw()
 	{
-		ellipse(position.x, position.y, 2, 2);
+		ellipse(position.x, position.y, bulletSize, bulletSize);
 	}
 }

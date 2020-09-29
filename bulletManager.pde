@@ -47,7 +47,21 @@ class BulletManager
     	  	bullets[i].draw();
     		}
     	}
-	
+		
+		for (int i = 0; i < bullets.length; ++i) 
+		{
+			if(bullets[i] == null)
+			{
+				continue;
+			}
+			else
+			{
+				if (bullets[i].position.y < 0 || bullets[i].position.y > height)
+				{
+					bullets[i] = null;
+				}
+			}
+		}
   		//Spawn new bullet it we press "space-bar"
   	}
 }

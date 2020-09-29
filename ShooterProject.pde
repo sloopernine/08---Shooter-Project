@@ -23,7 +23,7 @@ void draw()
 {
 	long currentTime = millis();
     deltaTime = (currentTime - time) * 0.001f;
-    background(55, 255, 255);
+    background(0, 0, 0);
 
     playerChar.update();
     playerChar.draw();

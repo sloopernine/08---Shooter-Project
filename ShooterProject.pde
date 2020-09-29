@@ -1,3 +1,4 @@
+import processing.sound.*;
 import sprites.utils.*;
 import sprites.maths.*;
 import sprites.*;

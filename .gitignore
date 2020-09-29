@@ -8,4 +8,4 @@ application.windows32/
 *.jar
 *.class
 *.java
-!/Sprites/**
+!/libraries/**

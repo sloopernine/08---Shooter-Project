@@ -24,7 +24,7 @@ class EnemyManager{
 
 		for(int i = 0; i < rowDirection.length; i++){
 
-			rowDirection[i] = new PVector(-1, 0);
+			rowDirection[i] = new PVector(random(0, 2) - 1, 0);
 		}
 
 		for(int y = 0; y < numberOfRows; y++){

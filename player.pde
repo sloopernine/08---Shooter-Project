@@ -10,6 +10,10 @@ class Player
 	float yInput = 0;
 	float v = 1;
 
+  PImage spriteBase;
+  PImage spriteLeft;
+  PImage spriteRight;
+
 public Player(int x, int y)
 {
 	//ellipseMode(CENTER);
@@ -18,6 +22,10 @@ public Player(int x, int y)
 	velocity = new PVector(0,0);
 	xInput = 0;
     yInput = 0;
+
+    spriteBase = loadImage("data/sprites/shipBase.png");
+    spriteLeft = loadImage("data/sprites/shipLeft.png");
+    spriteRight = loadImage("data/sprites/shipRight.png");
 }
 
 void update()
@@ -58,8 +66,21 @@ void update()
 
 void draw()
 {
+
+  if(velocity.x < -0.05){
+
+    image(spriteLeft, position.x - 16, position.y - 16);
+  } else if(velocity.x > 0.05){
+
+    image(spriteRight, position.x - 16, position.y - 16);
+  } else {
+
+    image(spriteBase, position.x - 16, position.y - 16);
+  }
+/*
 	fill(255, 255, 255);
 	ellipse(position.x, position.y, ballDiameter, ballDiameter);
+*/
 }
 
 }

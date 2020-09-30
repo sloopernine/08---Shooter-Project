@@ -12,7 +12,7 @@ class Enemy extends Character{
 	Enemy(float xPos, float yPos){
 		super();
 
-		sprite = loadImage("data/sprites/shipBase.png");
+		sprite = loadImage("data/sprites/enemy1.png");
 
 		position = new PVector(xPos, yPos);
 		baseColor = color(255, 0, 0);

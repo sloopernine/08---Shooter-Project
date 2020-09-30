@@ -5,7 +5,7 @@ class EnemyManager{
 	int enemiesPerLine = 8;
 	int numberOfRows = 10;
 
-	int xSpaceOffset = 60;
+	int xSpaceOffset = 70;
 	int yOffset = 500;
 
 	float xWall = 40;
@@ -55,5 +55,19 @@ class EnemyManager{
 				enemies[x][y].Draw();
 			}
 		}
+	}
+
+	boolean CheckCollision(GameObject obj){
+
+		boolean returnValue = false;
+
+		for(int y = 0; y < numberOfRows; y++){
+			for(int x = 0; x < enemiesPerLine; x++){
+
+				returnValue = enemies[x][y].Collision(obj);
+			}
+		}
+
+		return returnValue;
 	}
 }

@@ -1,3 +1,4 @@
+// Robin B
 class EnemyManager{
 
 	Enemy[][] enemies;
@@ -6,7 +7,7 @@ class EnemyManager{
 	int numberOfRows = 2;
 
 	int xSpaceOffset = 70;
-	int yOffset = 0;//500;
+	int yOffset = 50 * numberOfRows;
 
 	float xWall = 40;
 
@@ -71,6 +72,8 @@ class EnemyManager{
 
 				if(returnValue){
 
+
+					explosionManager.SpawnExplosion(enemies[x][y].position.x, enemies[x][y].position.y);
 					enemies[x][y].alive = false;
 					return returnValue;
 				} 

@@ -10,6 +10,8 @@ class Bullet extends GameObject
 		velocity = new PVector(0, -1);
 
 		collider = 10;
+
+		baseColor = color(0, 255, 0);
 	}
 
 	void update()
@@ -23,6 +25,7 @@ class Bullet extends GameObject
 
 	void draw()
 	{
+		fill(baseColor);
 		ellipse(position.x, position.y, collider, collider);
 	}
 }

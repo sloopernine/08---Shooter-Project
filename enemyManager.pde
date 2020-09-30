@@ -65,6 +65,8 @@ class EnemyManager{
 			for(int x = 0; x < enemiesPerLine; x++){
 
 				returnValue = enemies[x][y].Collision(obj);
+				if(returnValue)
+					return returnValue;
 			}
 		}
 

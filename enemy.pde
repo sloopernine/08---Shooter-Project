@@ -1,8 +1,9 @@
+// Robin B
 class Enemy extends Character{
 
 	PImage sprite;
 
-	float collider = 30;
+	float collider = 40;
 
 	float xSpeed = 40;
 	float ySpeed = 10;
@@ -15,7 +16,7 @@ class Enemy extends Character{
 		sprite = loadImage("data/sprites/enemy1.png");
 
 		position = new PVector(xPos, yPos);
-		baseColor = color(255, 0, 0);
+		baseColor = color(255, 0, 0, 50);
 
 		alive = true;
 	}
@@ -41,6 +42,12 @@ class Enemy extends Character{
 			} else {
 
 				image(sprite, position.x - 16, position.y - 16);
+
+				if(debug){
+
+					fill(baseColor);
+					ellipse(position.x, position.y, collider, collider);
+				}
 			}
 		}
 	}

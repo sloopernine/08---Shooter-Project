@@ -64,9 +64,17 @@ class EnemyManager{
 		for(int y = 0; y < numberOfRows; y++){
 			for(int x = 0; x < enemiesPerLine; x++){
 
-				returnValue = enemies[x][y].Collision(obj);
-				if(returnValue)
+				if(enemies[x][y].alive){
+
+					returnValue = enemies[x][y].Collision(obj);
+				}
+
+				if(returnValue){
+
+					enemies[x][y].alive = false;
 					return returnValue;
+				} 
+					
 			}
 		}
 

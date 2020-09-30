@@ -3,6 +3,8 @@ import sprites.utils.*;
 import sprites.maths.*;
 import sprites.*;
 
+float curCooldownTime;
+float cooldownTime = 0.45;
 float deltaTime;
 float time;
 Player playerChar;
@@ -32,10 +34,14 @@ void draw()
 
     enemyManager.Update();
 
-    if (keyPressed && key == 32) 
+    if (keyPressed && key == 32 && curCooldownTime <= 0) 
   	{  
       	bulletManager.spawnBullet(int(playerChar.position.x), int(playerChar.position.y+2));
+      	curCooldownTime = cooldownTime;
   	}
+
+  	if (curCooldownTime >= 0)
+  		curCooldownTime -= deltaTime;
 
     time = currentTime;
 

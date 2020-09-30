@@ -4,7 +4,7 @@ class Bullet
 	PVector velocity;
 	PVector position;
 	float speed = 5;
-	float bulletSize = 5;
+	float bulletSize = 10;
 
 	
 	public Bullet(int x, int y)

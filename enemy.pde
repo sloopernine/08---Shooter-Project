@@ -3,7 +3,7 @@ class Enemy extends Character{
 
 	PImage sprite;
 
-	float collider = 40;
+	float collider = 64;
 
 	float xSpeed = 40;
 	float ySpeed = 10;

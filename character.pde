@@ -1,3 +1,4 @@
+// Robin B
 class Character extends GameObject{
 	
 	boolean alive;

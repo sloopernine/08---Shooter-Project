@@ -30,9 +30,9 @@ void draw()
     playerChar.update();
     playerChar.draw();
 
+    enemyManager.Update();
     bulletManager.draw();
 
-    enemyManager.Update();
 
     if (keyPressed && key == 32 && curCooldownTime <= 0) 
   	{  

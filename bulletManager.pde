@@ -28,8 +28,6 @@ class BulletManager
 
 	}
 
-
-
 	void draw() 
 	{
   	//Update bullets
@@ -43,7 +41,10 @@ class BulletManager
     		else
     		{
     	  //found a bullet, update it.
-    	  	bullets[i].update();
+    	  	boolean hit = enemyManager.CheckCollision(bullets[i]);
+    	  	if (hit)
+    	  		println("Hit!");
+       	  	bullets[i].update();
     	  	bullets[i].draw();
     		}
     	}

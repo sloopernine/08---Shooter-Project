@@ -1,4 +1,4 @@
-class Bullet
+class Bullet extends GameObject
 {
 	//Ansvarig: Johan B
 	PVector velocity;

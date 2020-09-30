@@ -1,7 +1,4 @@
 import processing.sound.*;
-import sprites.utils.*;
-import sprites.maths.*;
-import sprites.*;
 
 float curCooldownTime;
 float cooldownTime = 0.45;
@@ -11,14 +8,18 @@ Player playerChar;
 BulletManager bulletManager;
 
 EnemyManager enemyManager;
+ExplosionManager explosionManager;
+
+boolean debug = false;
 
 void settings()
 {
 	size(1024, 768);
 
 	playerChar = new Player(width/2, height-height/5);
-	enemyManager = new EnemyManager();
 	bulletManager = new BulletManager();
+  enemyManager = new EnemyManager();
+  explosionManager = new ExplosionManager();
 }
 
 void draw()
@@ -31,6 +32,7 @@ void draw()
     playerChar.draw();
 
     enemyManager.Update();
+    explosionManager.Update();
     bulletManager.draw();
 
 

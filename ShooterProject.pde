@@ -9,6 +9,7 @@ BulletManager bulletManager;
 
 EnemyManager enemyManager;
 ExplosionManager explosionManager;
+AnimationManager animationManager;
 
 boolean debug = false;
 
@@ -20,6 +21,7 @@ void settings()
 	bulletManager = new BulletManager();
   enemyManager = new EnemyManager();
   explosionManager = new ExplosionManager();
+  animationManager = new AnimationManager();
 }
 
 void draw()
@@ -33,6 +35,8 @@ void draw()
 
     enemyManager.Update();
     explosionManager.Update();
+    animationManager.Update();
+
     bulletManager.draw();
 
 

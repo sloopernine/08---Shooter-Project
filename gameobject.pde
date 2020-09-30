@@ -21,7 +21,7 @@ class GameObject{
 
 	boolean Collision(GameObject obj){
 
-  		float maxDistance = obj.collider/2 + collider/2;
+  		float maxDistance = obj.collider + collider;
 
   		if(abs(obj.position.x - position.x) > maxDistance ||  
 	   		abs(obj.position.y - position.y) > maxDistance){

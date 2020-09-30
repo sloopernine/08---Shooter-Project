@@ -2,11 +2,11 @@ class EnemyManager{
 
 	Enemy[][] enemies;
 	PVector[] rowDirection;
-	int enemiesPerLine = 8;
-	int numberOfRows = 10;
+	int enemiesPerLine = 2;
+	int numberOfRows = 2;
 
 	int xSpaceOffset = 70;
-	int yOffset = 500;
+	int yOffset = 0;//500;
 
 	float xWall = 40;
 

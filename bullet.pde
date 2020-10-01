@@ -31,7 +31,11 @@ class Bullet extends GameObject
 	{
 
 		animation.Loop(position.x, position.y);
-		//fill(baseColor);
-		//ellipse(position.x, position.y, collider, collider);
+
+		if(debug){
+
+			fill(baseColor);
+			ellipse(position.x, position.y, collider, collider);
+		}
 	}
 }

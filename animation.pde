@@ -9,32 +9,34 @@ class Animation{
 	String name;
 
 	int spriteSize;
-	int col = 4;
-	int row = 4;
+	int col;
+	int row;
 
 	int animationCounter = 0;
 
 	boolean playLock = false;
 	boolean loopLock = false;
 
-	Animation(int rows, int columns, String fileName){
+	Animation(int rows, int columns, String fileName, int size){
 
 		position = new PVector(0, 0);
 
 		spriteSheet = loadImage("data/sprites/" + fileName + ".png");
 		spriteAnimation = new PImage[rows * columns];
 
-		spriteSize = spriteSheet.width / col;
-
+		// Save name of animation for future features
 		name = fileName;
 		col = columns;
 		row = rows;
+
+		spriteSize = size;
 
 		PrepareAnimation();
 
 		animationManager.Register(this);
 	}
 
+	// Iterate through animation from AnimationManager
 	void Update(){
 
 		image(spriteAnimation[animationCounter], position.x - (spriteSize / 2), position.y - (spriteSize / 2));
@@ -49,25 +51,32 @@ class Animation{
 		}
 	}
 
+	// Set animation to play once
 	void Play(float xPos, float yPos){
 
-		position = new PVector(xPos, yPos);
-		animationCounter = 0;
-		playLock = true;
+		if(playLock == false){
+
+			position = new PVector(xPos, yPos);
+			animationCounter = 0;
+			playLock = true;
+		}
 	}
 
+	// Set animation to loop
 	void Loop(float xPos, float yPos){
 
 		position = new PVector(xPos, yPos);
 		loopLock = true;
 	}
 
+	// Set animation to stop
 	void Stop(){
 
 		playLock = false;
 		loopLock = false;
 	}
 
+	// Return if animation still is playing
 	boolean isPlaying(){
 
 		boolean returnValue;
@@ -83,6 +92,7 @@ class Animation{
 		return returnValue;
 	}
 
+	// Cut out all frames from sprite sheet
 	void PrepareAnimation(){
 
 		int counter = 0;

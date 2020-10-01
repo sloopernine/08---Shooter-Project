@@ -1,7 +1,7 @@
 // Robin B
 class AnimationManager{
 	
-	int arraySize = 200;
+	int arraySize = 10;
 
 	Animation[] animations;
 
@@ -26,6 +26,7 @@ class AnimationManager{
 		}
 	}
 
+	// Add animation to the array
 	void Register(Animation anim){
 
 		for (int i = 0; i < animations.length; i++){

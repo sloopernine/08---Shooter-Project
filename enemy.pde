@@ -1,6 +1,8 @@
 // Robin B
 class Enemy extends Character{
 
+	//Animation animation;
+
 	PImage sprite;
 
 	float collider = 64;
@@ -19,6 +21,8 @@ class Enemy extends Character{
 		baseColor = color(255, 0, 0, 50);
 
 		alive = true;
+
+		//animation = new Animation(2, 2, "enemy1Anim", 32);
 	}
 
 	void Update(){
@@ -41,6 +45,7 @@ class Enemy extends Character{
 
 			} else {
 
+				//animation.Loop(position.x, position.y);
 				image(sprite, position.x - 16, position.y - 16);
 
 				if(debug){

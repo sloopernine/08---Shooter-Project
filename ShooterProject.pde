@@ -34,6 +34,7 @@ void draw()
     playerChar.update();
     playerChar.draw();
 
+    explosionManager.Update();
     enemyManager.Update();
     animationManager.Update();
     gameManager.update();

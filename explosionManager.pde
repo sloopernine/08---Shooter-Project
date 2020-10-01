@@ -15,6 +15,14 @@ class ExplosionManager{
 		}
 	}
 
+	void Update(){
+
+		for(int i = 0; i < explosions.length; i++){
+
+			explosions[i].active = explosions[i].animation.isPlaying();
+		}
+	}
+
 	void SpawnExplosion(float xPos, float yPos){
 
 		Explosion explosion = GetFreeExplosion();

@@ -1,3 +1,3 @@
 # Shooter Project
 
-<img src="screen1.gif" alt="There is no alt">
+<img src="screen2.gif" alt="There is no alt">

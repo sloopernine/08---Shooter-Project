@@ -13,11 +13,15 @@ class Animation{
 	int row;
 
 	int animationCounter = 0;
+	// Default 30, higher value = slower animation
+	int animSpeed = 30; 
 
 	boolean playLock = false;
 	boolean loopLock = false;
 
-	Animation(int rows, int columns, String fileName, int size){
+	int lastTime = millis();
+
+	Animation(int rows, int columns, String fileName, int animationSpeed){
 
 		position = new PVector(0, 0);
 
@@ -28,8 +32,10 @@ class Animation{
 		name = fileName;
 		col = columns;
 		row = rows;
+		// Default speed 30
+		animSpeed = animationSpeed;
 
-		spriteSize = size;
+		spriteSize = spriteSheet.width / col;
 
 		PrepareAnimation();
 
@@ -43,7 +49,11 @@ class Animation{
 
 		if(animationCounter < (row * col) - 1){
 
-			animationCounter++;
+			if(millis() - lastTime > animSpeed){
+
+				animationCounter++;
+				lastTime = millis();
+			}
 		} else {
 
 			animationCounter = 0;

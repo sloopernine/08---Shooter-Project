@@ -3,6 +3,8 @@ class Bullet extends GameObject
 	//Ansvarig: Johan B
 	float speed = 5;
 
+	Animation animation;
+
 	public Bullet(int x, int y)
 	{
 		position = new PVector(x, y);
@@ -12,6 +14,8 @@ class Bullet extends GameObject
 		collider = 10;
 
 		baseColor = color(0, 255, 0);
+
+		animation = new Animation(4, 4, "bullet1", 80);
 	}
 
 	void update()
@@ -25,7 +29,9 @@ class Bullet extends GameObject
 
 	void draw()
 	{
-		fill(baseColor);
-		ellipse(position.x, position.y, collider, collider);
+
+		animation.Loop(position.x, position.y);
+		//fill(baseColor);
+		//ellipse(position.x, position.y, collider, collider);
 	}
 }

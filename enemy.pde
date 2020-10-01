@@ -1,9 +1,9 @@
 // Robin B
 class Enemy extends Character{
 
-	//Animation animation;
+	Animation animation;
 
-	PImage sprite;
+	//PImage sprite;
 
 	float collider = 64;
 
@@ -15,14 +15,14 @@ class Enemy extends Character{
 	Enemy(float xPos, float yPos){
 		super();
 
-		sprite = loadImage("data/sprites/enemy1.png");
+		//sprite = loadImage("data/sprites/enemy1.png");
 
 		position = new PVector(xPos, yPos);
 		baseColor = color(255, 0, 0, 50);
 
 		alive = true;
 
-		//animation = new Animation(2, 2, "enemy1Anim", 32);
+		animation = new Animation(2, 2, "enemy1Anim", 60);
 	}
 
 	void Update(){
@@ -38,15 +38,15 @@ class Enemy extends Character{
 		
 		if(alive){
 
-			if(sprite == null){
+			if(animation == null){
 
 				fill(baseColor);
 				ellipse(position.x, position.y, collider, collider);
 
 			} else {
 
-				//animation.Loop(position.x, position.y);
-				image(sprite, position.x - 16, position.y - 16);
+				animation.Loop(position.x, position.y);
+				//image(sprite, position.x - 16, position.y - 16);
 
 				if(debug){
 
@@ -54,6 +54,9 @@ class Enemy extends Character{
 					ellipse(position.x, position.y, collider, collider);
 				}
 			}
+		} else {
+
+			animation.Stop();
 		}
 	}
 }

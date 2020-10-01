@@ -5,6 +5,7 @@ class EnemyManager{
 	PVector[] rowDirection;
 	int enemiesPerLine = 8;
 	int numberOfRows = 12;
+	int enemyPointValue = 10;
 
 	int xSpaceOffset = 70;
 	int yOffset = 50 * numberOfRows;
@@ -71,8 +72,7 @@ class EnemyManager{
 				}
 
 				if(returnValue){
-
-
+					gameManager.AddScore(enemyPointValue);
 					explosionManager.SpawnExplosion(enemies[x][y].position.x, enemies[x][y].position.y);
 					enemies[x][y].alive = false;
 					return returnValue;

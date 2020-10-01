@@ -5,8 +5,9 @@ float cooldownTime = 0.45;
 float deltaTime;
 float time;
 Player playerChar;
-BulletManager bulletManager;
 
+GameManager gameManager;
+BulletManager bulletManager;
 EnemyManager enemyManager;
 ExplosionManager explosionManager;
 AnimationManager animationManager;
@@ -16,11 +17,11 @@ boolean debug = false;
 void setup()
 {
 	size(1024, 768);
-
   animationManager = new AnimationManager();
 	playerChar = new Player(width/2, height-height/5);
 	bulletManager = new BulletManager();
   enemyManager = new EnemyManager();
+  gameManager = new GameManager();
   explosionManager = new ExplosionManager();
 }
 
@@ -35,9 +36,9 @@ void draw()
 
     enemyManager.Update();
     animationManager.Update();
+    gameManager.update();
 
     bulletManager.draw();
-
 
     if (keyPressed && key == 32 && curCooldownTime <= 0) 
   	{  

@@ -1,10 +1,10 @@
-class BulletManager
+class EnemyBulletManager
 {
 	//Ansvarig: Johan B
 	Bullet[] bullets;
 	Player player;
 
-	BulletManager()
+	EnemyBulletManager()
 	{
 		setup();
 	}
@@ -21,6 +21,7 @@ class BulletManager
         	if (bullets[i] == null) 
         	{
           	bullets[i] = new Bullet(x, y);
+          	bullets[i].velocity = new PVector(0, 1);
           	//we are done, break/quit the loop.
           	break;
        		}
@@ -41,9 +42,6 @@ class BulletManager
     		else
     		{
     	  //found a bullet, update it.
-    	  	boolean hit = enemyManager.CheckCollision(bullets[i]);
-    	  	if (hit)
-    	  		println("Hit!");
        	  	bullets[i].update();
     	  	bullets[i].draw();
     		}
@@ -65,4 +63,3 @@ class BulletManager
 		}
   	}
 }
-

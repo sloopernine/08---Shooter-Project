@@ -14,6 +14,8 @@ class EnemyManager{
 
 	float xCenter = width/2;
 
+	EnemyBulletManager enemyBulletManager;
+
 	EnemyManager(){
 
 		Setup();
@@ -21,6 +23,7 @@ class EnemyManager{
 
 	void Setup(){
 		
+		enemyBulletManager = new EnemyBulletManager();
 		enemies = new Enemy[enemiesPerLine][numberOfRows];
 		rowDirection = new PVector[numberOfRows]; 
 
@@ -55,6 +58,9 @@ class EnemyManager{
 				enemies[x][y].SetDirection(rowDirection[y]);
 				enemies[x][y].Update();
 				enemies[x][y].Draw();
+				//enemyBulletManager.spawnBullet(int(enemies[x][y].position.x), int(enemies[x][y].position.y));
+				//enemyBulletManager.draw();
+
 			}
 		}
 	}

@@ -8,7 +8,7 @@ class Explosion extends GameObject{
 
 		active = false;
 
-		animation = new Animation(4, 4, "expl1", 30);
+		animation = new Animation(4, 4, "expl2", 30);
 	}
 
 	void Explode(float xPos, float yPos){

@@ -9,6 +9,7 @@ float enemyFiringCooldown = 2;
 Player playerChar;
 
 GameManager gameManager;
+SceneManager sceneManager;
 BulletManager bulletManager;
 EnemyManager enemyManager;
 ExplosionManager explosionManager;
@@ -24,6 +25,7 @@ void setup()
 	bulletManager = new BulletManager();
   enemyManager = new EnemyManager();
   gameManager = new GameManager();
+  sceneManager = new SceneManager();
   explosionManager = new ExplosionManager();
 }
 
@@ -33,12 +35,15 @@ void draw()
     deltaTime = (currentTime - time) * 0.001f;
     background(0, 0, 0);
 
+    sceneManager.Update();
+
     playerChar.update();
     playerChar.draw();
 
     explosionManager.Update();
     enemyManager.Update();
     animationManager.Update();
+
     gameManager.update();
 
     bulletManager.draw();

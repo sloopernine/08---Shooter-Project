@@ -8,7 +8,7 @@ class Animation{
 
 	String name;
 
-	int spriteSize = 64;
+	int spriteSize;
 	int col = 4;
 	int row = 4;
 
@@ -24,18 +24,20 @@ class Animation{
 		spriteSheet = loadImage("data/sprites/" + fileName + ".png");
 		spriteAnimation = new PImage[rows * columns];
 
-		spriteSize = spriteSheet.width / 2;
+		spriteSize = spriteSheet.width / col;
 
 		name = fileName;
 		col = columns;
 		row = rows;
 
 		PrepareAnimation();
+
+		animationManager.Register(this);
 	}
 
-	void Play(float xPos, float yPos){
+	void Update(){
 
-		image(spriteAnimation[animationCounter], xPos - (spriteSize / 2), yPos - (spriteSize / 2));
+		image(spriteAnimation[animationCounter], position.x - (spriteSize / 2), position.y - (spriteSize / 2));
 
 		if(animationCounter < (row * col) - 1){
 
@@ -43,12 +45,42 @@ class Animation{
 		} else {
 
 			animationCounter = 0;
+			playLock = false;
 		}
+	}
+
+	void Play(float xPos, float yPos){
+
+		position = new PVector(xPos, yPos);
+		animationCounter = 0;
+		playLock = true;
 	}
 
 	void Loop(float xPos, float yPos){
 
+		position = new PVector(xPos, yPos);
+		loopLock = true;
+	}
 
+	void Stop(){
+
+		playLock = false;
+		loopLock = false;
+	}
+
+	boolean isPlaying(){
+
+		boolean returnValue;
+
+		if(playLock == false && loopLock == false){
+
+			returnValue = false;
+		} else {
+
+			returnValue = true;
+		}
+
+		return returnValue;
 	}
 
 	void PrepareAnimation(){

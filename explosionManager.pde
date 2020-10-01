@@ -15,19 +15,6 @@ class ExplosionManager{
 		}
 	}
 
-	void Update(){
-
-		Draw();
-	}
-
-	void Draw(){
-
-		for(int i = 0; i < explosions.length; i++){
-
-			explosions[i].Draw();
-		}
-	}
-
 	void SpawnExplosion(float xPos, float yPos){
 
 		Explosion explosion = GetFreeExplosion();

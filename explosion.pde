@@ -6,6 +6,8 @@ class Explosion extends GameObject{
 	Explosion(){
 		super();
 
+		active = false;
+
 		animation = new Animation(4, 4, "expl1");
 	}
 

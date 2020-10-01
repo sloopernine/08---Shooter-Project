@@ -18,7 +18,10 @@ class AnimationManager{
 				continue;
 			} else {
 
-				//ANIMATION CODE FOR PLAY AND LOOP GOES HERE
+				if(animations[i].playLock || animations[i].loopLock){
+
+					animations[i].Update();
+				}
 			}
 		}
 	}

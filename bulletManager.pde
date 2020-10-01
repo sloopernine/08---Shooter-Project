@@ -59,6 +59,7 @@ class BulletManager
 			{
 				if (bullets[i].position.y < 0 || bullets[i].position.y > height)
 				{
+					bullets[i].animation.Stop();
 					bullets[i] = null;
 				}
 			}

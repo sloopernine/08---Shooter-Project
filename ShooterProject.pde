@@ -9,13 +9,15 @@ BulletManager bulletManager;
 
 EnemyManager enemyManager;
 ExplosionManager explosionManager;
+AnimationManager animationManager;
 
 boolean debug = false;
 
-void settings()
+void setup()
 {
 	size(1024, 768);
 
+  animationManager = new AnimationManager();
 	playerChar = new Player(width/2, height-height/5);
 	bulletManager = new BulletManager();
   enemyManager = new EnemyManager();
@@ -32,7 +34,8 @@ void draw()
     playerChar.draw();
 
     enemyManager.Update();
-    explosionManager.Update();
+    animationManager.Update();
+
     bulletManager.draw();
 
 

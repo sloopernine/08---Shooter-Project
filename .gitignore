@@ -9,4 +9,5 @@ application.windows32/
 *.class
 *.java
 *.pyxel
+*.psd
 !/libraries/**

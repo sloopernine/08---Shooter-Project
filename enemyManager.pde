@@ -58,11 +58,16 @@ class EnemyManager{
 				enemies[x][y].SetDirection(rowDirection[y]);
 				enemies[x][y].Update();
 				enemies[x][y].Draw();
-				//enemyBulletManager.spawnBullet(int(enemies[x][y].position.x), int(enemies[x][y].position.y));
-				//enemyBulletManager.draw();
-
+				enemyBulletManager.draw();
 			}
 		}
+	}
+
+	void Shoot()
+	{
+		int shootX = int(random(0, enemiesPerLine));
+		int shootY = int(random(0, numberOfRows));
+		enemyBulletManager.spawnBullet(int(enemies[shootX][shootY].position.x), int(enemies[shootX][shootY].position.y));
 	}
 
 	boolean CheckCollision(GameObject obj){

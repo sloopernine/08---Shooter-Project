@@ -4,6 +4,8 @@ float curCooldownTime;
 float cooldownTime = 0.45;
 float deltaTime;
 float time;
+float enemyCurCooldown = 0;
+float enemyFiringCooldown = 2;
 Player playerChar;
 
 GameManager gameManager;
@@ -47,8 +49,17 @@ void draw()
       	curCooldownTime = cooldownTime;
   	}
 
+
   	if (curCooldownTime >= 0)
   		curCooldownTime -= deltaTime;
+    if(enemyCurCooldown >= 0)
+      enemyCurCooldown -= deltaTime; 
+    else if(enemyCurCooldown <= 0)
+    {
+      enemyCurCooldown = enemyFiringCooldown;
+      //enemyManager.Shoot();
+      println("ENEMY SHOOT");
+    }
 
     time = currentTime;
 

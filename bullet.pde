@@ -30,7 +30,7 @@ class Bullet extends GameObject
 	void draw()
 	{
 
-		animation.Loop(position.x, position.y);
+		animation.loop(position.x, position.y);
 
 		if(debug){
 

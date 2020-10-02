@@ -21,7 +21,7 @@ class GameObject{
 	}
 	
 
-	boolean Collision(GameObject obj){
+	boolean collision(GameObject obj){
 
   		float maxDistance = obj.collider + collider;
 
@@ -38,7 +38,7 @@ class GameObject{
   		}
 	}
 
-	void SetDirection(PVector dir){
+	void setDirection(PVector dir){
 
 		direction = dir;
 	}

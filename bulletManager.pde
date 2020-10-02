@@ -41,7 +41,7 @@ class BulletManager
     		else
     		{
     	  //found a bullet, update it.
-    	  	boolean hit = enemyManager.CheckCollision(bullets[i]);
+    	  	boolean hit = enemyManager.checkCollision(bullets[i]);
     	  	if (hit)
     	  		println("Hit!");
        	  	bullets[i].update();
@@ -59,7 +59,7 @@ class BulletManager
 			{
 				if (bullets[i].position.y < 0 || bullets[i].position.y > height)
 				{
-					bullets[i].animation.Stop();
+					bullets[i].animation.stop();
 					bullets[i] = null;
 				}
 			}

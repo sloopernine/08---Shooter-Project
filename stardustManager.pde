@@ -1,10 +1,10 @@
 // Robin B
-class SceneManager{
+class StardustManager{
 	
 	SpaceDust[] spaceDust;
 	int dustAmount = 30; 
 
-	SceneManager(){
+	StardustManager(){
 
 		spaceDust = new SpaceDust[dustAmount];
 
@@ -15,28 +15,27 @@ class SceneManager{
 	}
 
 
-	void Update(){
+	void update(){
 
 		int lottery = (int)random(1, 200);
 
 		if(lottery == 123){
 
-			SpawnDust();
+			spawnDust();
 		}
 
 		for(int i = 0; i < spaceDust.length; i++){
 
 			if(spaceDust[i] != null){
 
-				spaceDust[i].Update();
+				spaceDust[i].update();
 			}
-			
 		}
 	}
 
-	void SpawnDust(){
+	void spawnDust(){
 
-		SpaceDust dust = GetFreeDust();
+		SpaceDust dust = getFreeDust();
 
 		if(dust != null){
 
@@ -49,7 +48,7 @@ class SceneManager{
 		}
 	}
 
-	SpaceDust GetFreeDust(){
+	SpaceDust getFreeDust(){
 
 		SpaceDust returnValue = null;
 

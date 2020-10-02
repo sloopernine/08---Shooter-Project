@@ -10,6 +10,9 @@ class Player
 	float yInput = 0;
 	float v = 1;
 
+  float curCooldownTime;
+  float cooldownTime = 0.45;
+
   PImage spriteBase;
   PImage spriteLeft;
   PImage spriteRight;
@@ -31,18 +34,29 @@ public Player(int x, int y)
 void update()
 {
 
-  if (moveLeft)
+  if (inputMoveLeft)
   {
     xInput -= v;
   }
-  if (moveRight)
+  if (inputMoveRight)
   {
     xInput += v;
   }
   //If there is no player input the xInput will reset to start deceleration.
-  if (!moveLeft && !moveRight)
+  if (!inputMoveLeft && !inputMoveRight)
   {
     xInput = 0;
+  }
+
+  if (inputShoot && curCooldownTime <= 0){
+
+    bulletManager.spawnBullet(int(position.x), int(position.y+2));
+    curCooldownTime = cooldownTime;
+  }
+
+  if (curCooldownTime >= 0){
+
+    curCooldownTime -= deltaTime;
   }
   
   //Creates a acceleration vector with player input and sets the magnitude of that vector.

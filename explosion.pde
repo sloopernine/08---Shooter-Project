@@ -11,9 +11,9 @@ class Explosion extends GameObject{
 		animation = new Animation(4, 4, "expl2", 30);
 	}
 
-	void Explode(float xPos, float yPos){
+	void explode(float xPos, float yPos){
 
 		active = true;
-		animation.Play(xPos, yPos);
+		animation.play(xPos, yPos);
 	}
 }

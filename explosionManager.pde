@@ -16,7 +16,7 @@ class ExplosionManager{
 	}
 
 
-	void Update(){
+	void update(){
 
 		for(int i = 0; i < explosions.length; i++){
 
@@ -24,20 +24,20 @@ class ExplosionManager{
 		}
 	}
 
-	void SpawnExplosion(float xPos, float yPos){
+	void spawnExplosion(float xPos, float yPos){
 
-		Explosion explosion = GetFreeExplosion();
+		Explosion explosion = getFreeExplosion();
 
 		if(explosion != null){
 
-			explosion.Explode(xPos, yPos);
+			explosion.explode(xPos, yPos);
 		} else {
 
 			println("No free explosion to spawn FIX!");	
 		}
 	}
 
-	Explosion GetFreeExplosion(){
+	Explosion getFreeExplosion(){
 
 		Explosion returnValue = null;
 

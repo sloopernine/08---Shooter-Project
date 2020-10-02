@@ -11,7 +11,7 @@ class AnimationManager{
 	}
 
 
-	void Update(){
+	void update(){
 
 		for (int i = 0; i < animations.length; i++){
 
@@ -22,13 +22,13 @@ class AnimationManager{
 
 				if(animations[i].playLock || animations[i].loopLock){
 
-					animations[i].Update();
+					animations[i].update();
 				}
 			}
 		}
 	}
 
-	int Register(Animation anim){
+	int register(Animation anim){
 
 		for (int i = 0; i < animations.length; i++){
 
@@ -44,7 +44,7 @@ class AnimationManager{
 		return -1;
 	}
 
-	void Unregister(Animation anim){
+	void unregister(Animation anim){
 
 		for (int i = 0; i < animations.length; i++){
 

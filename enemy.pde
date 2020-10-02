@@ -19,7 +19,7 @@ class Enemy extends Character{
 	}
 
 
-	void Update(){
+	void update(){
 
 		if(alive){
 
@@ -28,7 +28,7 @@ class Enemy extends Character{
 		}
 	}
 
-	void Draw(){
+	void draw(){
 		
 		if(alive){
 
@@ -39,7 +39,7 @@ class Enemy extends Character{
 
 			} else {
 
-				animation.Loop(position.x, position.y);
+				animation.loop(position.x, position.y);
 
 				if(debug){
 
@@ -49,7 +49,7 @@ class Enemy extends Character{
 			}
 		} else {
 
-			animation.Stop();
+			animation.stop();
 		}
 	}
 }

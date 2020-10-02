@@ -1,71 +1,62 @@
 import processing.sound.*;
 
-float curCooldownTime;
-float cooldownTime = 0.45;
-float deltaTime;
-float time;
 float enemyCurCooldown = 0;
 float enemyFiringCooldown = 2;
 Player playerChar;
 
+float deltaTime;
+float time;
+
+boolean debug = false;
+
 GameManager gameManager;
-SceneManager sceneManager;
+StardustManager stardustManager;
 BulletManager bulletManager;
 EnemyManager enemyManager;
 ExplosionManager explosionManager;
 AnimationManager animationManager;
 
-boolean debug = false;
+void setup(){
 
-void setup()
-{
 	size(1024, 768);
-  animationManager = new AnimationManager();
+	animationManager = new AnimationManager();
 	playerChar = new Player(width/2, height-height/5);
 	bulletManager = new BulletManager();
-  enemyManager = new EnemyManager();
-  gameManager = new GameManager();
-  sceneManager = new SceneManager();
-  explosionManager = new ExplosionManager();
+	enemyManager = new EnemyManager();
+	gameManager = new GameManager();
+	stardustManager = new StardustManager();
+	explosionManager = new ExplosionManager();
 }
 
-void draw()
-{
+void draw(){
+
 	long currentTime = millis();
-    deltaTime = (currentTime - time) * 0.001f;
-    background(0, 0, 0);
+	deltaTime = (currentTime - time) * 0.001f;
 
-    sceneManager.Update();
+	background(0, 0, 0);
 
-    playerChar.update();
-    playerChar.draw();
+	stardustManager.update();
 
-    explosionManager.Update();
-    enemyManager.Update();
-    animationManager.Update();
+	playerChar.update();
+	playerChar.draw();
 
-    gameManager.update();
+	explosionManager.update();
+	enemyManager.update();
+	animationManager.update();
 
-    bulletManager.draw();
+	gameManager.update();
 
-    if (keyPressed && key == 32 && curCooldownTime <= 0) 
-  	{  
-      	bulletManager.spawnBullet(int(playerChar.position.x), int(playerChar.position.y+2));
-      	curCooldownTime = cooldownTime;
-  	}
+	bulletManager.draw();
 
+	if(enemyCurCooldown >= 0){
 
-  	if (curCooldownTime >= 0)
-  		curCooldownTime -= deltaTime;
-    if(enemyCurCooldown >= 0)
-      enemyCurCooldown -= deltaTime; 
-    else if(enemyCurCooldown <= 0)
-    {
-      enemyCurCooldown = enemyFiringCooldown;
-      //enemyManager.Shoot();
-      println("ENEMY SHOOT");
-    }
+		enemyCurCooldown -= deltaTime; 
+	} else if(enemyCurCooldown <= 0){
 
-    time = currentTime;
+		enemyCurCooldown = enemyFiringCooldown;
+		//enemyManager.Shoot();
+		println("ENEMY SHOOT");
+	}
 
+	time = currentTime;
 }

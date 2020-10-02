@@ -32,13 +32,13 @@ class Animation{
 
 		spriteSize = spriteSheet.width / col;
 
-		PrepareAnimation();
+		prepareAnimation();
 
-		animationManager.Register(this);
+		animationManager.register(this);
 	}
 
 
-	void Update(){
+	void update(){
 
 		image(spriteAnimation[animationCounter], position.x - (spriteSize / 2), position.y - (spriteSize / 2));
 
@@ -56,7 +56,7 @@ class Animation{
 		}
 	}
 
-	void Play(float xPos, float yPos){
+	void play(float xPos, float yPos){
 
 		if(playLock == false){
 
@@ -66,13 +66,13 @@ class Animation{
 		}
 	}
 
-	void Loop(float xPos, float yPos){
+	void loop(float xPos, float yPos){
 
 		position = new PVector(xPos, yPos);
 		loopLock = true;
 	}
 
-	void Stop(){
+	void stop(){
 
 		playLock = false;
 		loopLock = false;
@@ -93,7 +93,7 @@ class Animation{
 		return returnValue;
 	}
 
-	void PrepareAnimation(){
+	void prepareAnimation(){
 
 		int counter = 0;
 

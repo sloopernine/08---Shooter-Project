@@ -13,15 +13,15 @@ class SpaceDust extends GameObject{
 	}
 
 
-	void Update(){
+	void update(){
 
 		if(position.y > height + 5){
 
-			animation.Stop();
+			animation.stop();
 			active = false;
 		} else {
 
-			animation.Loop(position.x, position.y);
+			animation.loop(position.x, position.y);
 			position.y += speed * deltaTime;
 		}
 	}

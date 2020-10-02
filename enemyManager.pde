@@ -18,11 +18,11 @@ class EnemyManager{
 
 	EnemyManager(){
 
-		Setup();
+		setup();
 	}
 
 
-	void Setup(){
+	void setup(){
 		
 		enemyBulletManager = new EnemyBulletManager();
 		enemies = new Enemy[enemiesPerLine][numberOfRows];
@@ -41,9 +41,10 @@ class EnemyManager{
 		}
 	}
 
-	void Update(){
+	void update(){
 
 		for(int y = 0; y < numberOfRows; y++){
+
 			for(int x = 0; x < enemiesPerLine; x++){
 
 				if(x == 0 && enemies[x][y].position.x < xWall){
@@ -56,22 +57,22 @@ class EnemyManager{
 					rowDirection[y] = new PVector(-1, 0);
 				}
 
-				enemies[x][y].SetDirection(rowDirection[y]);
-				enemies[x][y].Update();
-				enemies[x][y].Draw();
+				enemies[x][y].setDirection(rowDirection[y]);
+				enemies[x][y].update();
+				enemies[x][y].draw();
 				enemyBulletManager.draw();
 			}
 		}
 	}
 
-	void Shoot(){
-		
+	void shoot(){
+
 		int shootX = int(random(0, enemiesPerLine));
 		int shootY = int(random(0, numberOfRows));
 		enemyBulletManager.spawnBullet(int(enemies[shootX][shootY].position.x), int(enemies[shootX][shootY].position.y));
 	}
 
-	boolean CheckCollision(GameObject obj){
+	boolean checkCollision(GameObject obj){
 
 		boolean returnValue = false;
 
@@ -81,13 +82,13 @@ class EnemyManager{
 
 				if(enemies[x][y].alive){
 
-					returnValue = enemies[x][y].Collision(obj);
+					returnValue = enemies[x][y].collision(obj);
 				}
 
 				if(returnValue){
 
 					gameManager.AddScore(enemyPointValue);
-					explosionManager.SpawnExplosion(enemies[x][y].position.x, enemies[x][y].position.y);
+					explosionManager.spawnExplosion(enemies[x][y].position.x, enemies[x][y].position.y);
 					enemies[x][y].alive = false;
 					return returnValue;
 				} 

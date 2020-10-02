@@ -1,20 +1,38 @@
-boolean moveRight;
-boolean moveLeft;
+boolean inputMoveRight;
+boolean inputMoveLeft;
+boolean inputShoot;
+
 boolean gravityOn = false;
 PVector vectorInput = new PVector(0,0);
 
 void keyPressed()
 {
-	if (key == 'a')
-		moveLeft = true;
-	else if (key == 'd')
-		moveRight = true;
+	if (key == 'a'){
+
+		inputMoveLeft = true;
+	} else if (key == 'd'){
+
+		inputMoveRight = true;
+	}
+
+	if (key == 32){
+
+		inputShoot = true;
+	}
 }
 
 void keyReleased()
 {
-	if (key == 'a')
-		moveLeft = false;
-	else if (key == 'd')
-		moveRight = false;
+	if (key == 'a'){
+
+		inputMoveLeft = false;
+	} else if (key == 'd'){
+
+		inputMoveRight = false;
+	}
+
+	if (key == 32){
+
+		inputShoot = false;
+	}
 }

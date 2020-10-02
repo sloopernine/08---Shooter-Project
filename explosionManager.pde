@@ -15,6 +15,7 @@ class ExplosionManager{
 		}
 	}
 
+
 	void Update(){
 
 		for(int i = 0; i < explosions.length; i++){

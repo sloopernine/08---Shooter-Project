@@ -12,6 +12,7 @@ class SpaceDust extends GameObject{
 		animation = new Animation(2, 2, "dustLineAnim", 80);
 	}
 
+
 	void Update(){
 
 		if(position.y > height + 5){

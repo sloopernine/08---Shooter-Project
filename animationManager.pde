@@ -10,9 +10,11 @@ class AnimationManager{
 		animations = new Animation[arraySize];
 	}
 
+
 	void Update(){
 
 		for (int i = 0; i < animations.length; i++){
+
 			if (animations[i] == null){
 				
 				continue;
@@ -26,14 +28,14 @@ class AnimationManager{
 		}
 	}
 
-	// Add animation to the array
 	int Register(Animation anim){
 
 		for (int i = 0; i < animations.length; i++){
+
 			if (animations[i] == null){
 				
 				animations[i] = anim;
-				// Returns index number if wanted
+				// Returns index number if wanted, but not needed for basic functionality
 				return i;
 			}
 		}
@@ -45,12 +47,13 @@ class AnimationManager{
 	void Unregister(Animation anim){
 
 		for (int i = 0; i < animations.length; i++){
+
 			if (animations[i] == null){
 				
 				continue;
 			} else {
 
-				//DO SOMETHING HERE
+				//TODO FOR THE FUTURE
 			}
 		}
 	}

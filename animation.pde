@@ -2,19 +2,15 @@
 class Animation{
 	
 	PVector position;
+	String name;
 
 	PImage spriteSheet;
 	PImage[] spriteAnimation;
-
-	String name;
-
 	int spriteSize;
 	int col;
 	int row;
-
 	int animationCounter = 0;
-	// Default 30, higher value = slower animation
-	int animSpeed = 30; 
+	int animSpeed = 30; // Higher value = slower animation
 
 	boolean playLock = false;
 	boolean loopLock = false;
@@ -28,11 +24,10 @@ class Animation{
 		spriteSheet = loadImage("data/sprites/" + fileName + ".png");
 		spriteAnimation = new PImage[rows * columns];
 
-		// Save name of animation for future features
 		name = fileName;
 		col = columns;
 		row = rows;
-		// Default speed 30
+
 		animSpeed = animationSpeed;
 
 		spriteSize = spriteSheet.width / col;
@@ -42,7 +37,7 @@ class Animation{
 		animationManager.Register(this);
 	}
 
-	// Iterate through animation from AnimationManager
+
 	void Update(){
 
 		image(spriteAnimation[animationCounter], position.x - (spriteSize / 2), position.y - (spriteSize / 2));
@@ -61,7 +56,6 @@ class Animation{
 		}
 	}
 
-	// Set animation to play once
 	void Play(float xPos, float yPos){
 
 		if(playLock == false){
@@ -72,21 +66,18 @@ class Animation{
 		}
 	}
 
-	// Set animation to loop
 	void Loop(float xPos, float yPos){
 
 		position = new PVector(xPos, yPos);
 		loopLock = true;
 	}
 
-	// Set animation to stop
 	void Stop(){
 
 		playLock = false;
 		loopLock = false;
 	}
 
-	// Return if animation still is playing
 	boolean isPlaying(){
 
 		boolean returnValue;
@@ -102,7 +93,6 @@ class Animation{
 		return returnValue;
 	}
 
-	// Cut out all frames from sprite sheet
 	void PrepareAnimation(){
 
 		int counter = 0;

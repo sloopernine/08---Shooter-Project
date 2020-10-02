@@ -19,6 +19,7 @@ class GameObject{
 
 		active = true;
 	}
+	
 
 	boolean Collision(GameObject obj){
 

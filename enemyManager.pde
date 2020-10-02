@@ -21,6 +21,7 @@ class EnemyManager{
 		Setup();
 	}
 
+
 	void Setup(){
 		
 		enemyBulletManager = new EnemyBulletManager();
@@ -63,8 +64,8 @@ class EnemyManager{
 		}
 	}
 
-	void Shoot()
-	{
+	void Shoot(){
+		
 		int shootX = int(random(0, enemiesPerLine));
 		int shootY = int(random(0, numberOfRows));
 		enemyBulletManager.spawnBullet(int(enemies[shootX][shootY].position.x), int(enemies[shootX][shootY].position.y));
@@ -75,6 +76,7 @@ class EnemyManager{
 		boolean returnValue = false;
 
 		for(int y = 0; y < numberOfRows; y++){
+
 			for(int x = 0; x < enemiesPerLine; x++){
 
 				if(enemies[x][y].alive){
@@ -83,6 +85,7 @@ class EnemyManager{
 				}
 
 				if(returnValue){
+
 					gameManager.AddScore(enemyPointValue);
 					explosionManager.SpawnExplosion(enemies[x][y].position.x, enemies[x][y].position.y);
 					enemies[x][y].alive = false;

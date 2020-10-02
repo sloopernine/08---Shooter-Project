@@ -3,19 +3,12 @@ class Enemy extends Character{
 
 	Animation animation;
 
-	//PImage sprite;
-
 	float collider = 64;
-
 	float xSpeed = 40;
 	float ySpeed = 10;
 
-	boolean alive;
-
 	Enemy(float xPos, float yPos){
 		super();
-
-		//sprite = loadImage("data/sprites/enemy1.png");
 
 		position = new PVector(xPos, yPos);
 		baseColor = color(255, 0, 0, 50);
@@ -24,6 +17,7 @@ class Enemy extends Character{
 
 		animation = new Animation(2, 2, "enemy1Anim", 100);
 	}
+
 
 	void Update(){
 
@@ -46,7 +40,6 @@ class Enemy extends Character{
 			} else {
 
 				animation.Loop(position.x, position.y);
-				//image(sprite, position.x - 16, position.y - 16);
 
 				if(debug){
 

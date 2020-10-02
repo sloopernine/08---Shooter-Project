@@ -14,6 +14,7 @@ class SceneManager{
 		}
 	}
 
+
 	void Update(){
 
 		int lottery = (int)random(1, 200);

@@ -13,9 +13,9 @@ class Player
   float curCooldownTime;
   float cooldownTime = 0.45;
 
-  PImage spriteBase;
-  PImage spriteLeft;
-  PImage spriteRight;
+  Animation animationLeft;
+  Animation animationRight;
+  Animation animationCenter;
 
 public Player(int x, int y)
 {
@@ -26,9 +26,9 @@ public Player(int x, int y)
 	xInput = 0;
     yInput = 0;
 
-    spriteBase = loadImage("data/sprites/shipBase.png");
-    spriteLeft = loadImage("data/sprites/shipLeft.png");
-    spriteRight = loadImage("data/sprites/shipRight.png");
+  animationLeft = new Animation(2, 2, "shipLeft", 30);
+  animationRight = new Animation(2, 2, "shipRight", 30);
+  animationCenter = new Animation(2, 2, "shipCenter", 30);
 }
 
 void update()
@@ -78,23 +78,31 @@ void update()
   position.add(velocity);
 }
 
-void draw()
-{
+  void draw()
+  {
 
-  if(velocity.x < -0.05){
+    if(inputMoveLeft){
 
-    image(spriteLeft, position.x - 16, position.y - 16);
-  } else if(velocity.x > 0.05){
+      animationLeft.loop(position.x, position.y);
+    } else {
+      
+      animationLeft.stop();
+    }
 
-    image(spriteRight, position.x - 16, position.y - 16);
-  } else {
+    if(inputMoveRight){
 
-    image(spriteBase, position.x - 16, position.y - 16);
+      animationRight.loop(position.x, position.y);
+    } else {
+
+      animationRight.stop();
+    }
+
+    if(!inputMoveLeft && !inputMoveRight){
+
+      animationCenter.loop(position.x, position.y);
+    } else {
+
+      animationCenter.stop();
+    }
   }
-/*
-	fill(255, 255, 255);
-	ellipse(position.x, position.y, ballDiameter, ballDiameter);
-*/
-}
-
 }

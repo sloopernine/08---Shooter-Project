@@ -1,65 +1,67 @@
-class EnemyBulletManager
-{
-	//Ansvarig: Johan B
-	Bullet[] bullets;
-	Player player;
+class EnemyBulletManager{
 
-	EnemyBulletManager()
-	{
+	//Ansvarig: Johan B
+	// Edited/Reworked Robin B	
+	EnemyBullet[] bullets;
+
+	EnemyBulletManager(){
+
 		setup();
 	}
 
-	void setup()
-	{
- 	   bullets = new Bullet[10];
-	}
+	void setup(){
 
-	void spawnBullet(int x, int y)
-	{
-		for (int i = 0; i < bullets.length; ++i) 
-      	{
-        	if (bullets[i] == null) 
-        	{
-          	bullets[i] = new Bullet(x, y);
-          	bullets[i].velocity = new PVector(0, 1);
-          	//we are done, break/quit the loop.
-          	break;
-       		}
+		bullets = new EnemyBullet[10];
+
+		for (int i = 0; i < bullets.length; ++i){
+			
+			bullets[i] = new EnemyBullet();
 		}
-
 	}
 
-	void draw() 
-	{
-  	//Update bullets
-  		for (int i = 0; i < bullets.length; i++) 
-  		{
-    		if (bullets[i] == null) 
-    		{
-      		//No bullet, skip to the next one.
-      		continue;
-    		}
-    		else
-    		{
-    	  //found a bullet, update it.
-       	  	bullets[i].update();
-    	  	bullets[i].draw();
-    		}
-    	}
-		
-		for (int i = 0; i < bullets.length; ++i) 
-		{
-			if(bullets[i] == null)
-			{
-				continue;
-			}
-			else
-			{
-				if (bullets[i].position.y < 0 || bullets[i].position.y > height)
-				{
-					bullets[i] = null;
+	void update(){
+
+		for (int i = 0; i < bullets.length; i++){
+
+			if(bullets[i].active){
+
+				bullets[i].update();
+				bullets[i].draw();
+
+				boolean hit = player.checkCollision(bullets[i]);
+
+				if(bullets[i].position.y > height + 10 || hit == true){
+
+					bullets[i].animation.stop();
+					bullets[i].active = false;
 				}
 			}
 		}
-  	}
+	}
+
+	void spawnBullet(float xPos, float yPos){
+
+		EnemyBullet bullet = getFreeBullet();
+
+		if(bullet != null){
+
+			bullet.position = new PVector(xPos, yPos);
+			bullet.active = true;
+		}
+	}
+
+	EnemyBullet getFreeBullet(){
+
+		EnemyBullet returnValue = null;
+
+		for(int i = 0; i < bullets.length; i++){
+
+			if(!bullets[i].active){
+
+				return bullets[i];
+			}
+		}
+
+		return returnValue;
+	}
 }

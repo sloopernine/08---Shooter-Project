@@ -1,14 +1,11 @@
 import processing.sound.*;
 
-float enemyCurCooldown = 0;
-float enemyFiringCooldown = 2;
-Player playerChar;
-
 float deltaTime;
 float time;
 
 boolean debug = false;
 
+Player player;
 GameManager gameManager;
 SceneManager sceneManager;
 BulletManager bulletManager;
@@ -20,7 +17,7 @@ void setup(){
 
 	size(1024, 768);
 	animationManager = new AnimationManager();
-	playerChar = new Player(width/2, height-height/5);
+	player = new Player(width/2, height-height/5);
 	bulletManager = new BulletManager();
 	enemyManager = new EnemyManager();
 	gameManager = new GameManager();
@@ -37,8 +34,8 @@ void draw(){
 
 	sceneManager.update();
 
-	playerChar.update();
-	playerChar.draw();
+	player.update();
+	player.draw();
 
 	explosionManager.update();
 	enemyManager.update();
@@ -47,16 +44,6 @@ void draw(){
 	gameManager.update();
 
 	bulletManager.update();
-
-	if(enemyCurCooldown >= 0){
-
-		enemyCurCooldown -= deltaTime; 
-	} else if(enemyCurCooldown <= 0){
-
-		enemyCurCooldown = enemyFiringCooldown;
-		//enemyManager.Shoot();
-		println("ENEMY SHOOT");
-	}
 
 	time = currentTime;
 }

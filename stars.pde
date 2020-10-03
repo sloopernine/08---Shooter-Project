@@ -9,7 +9,7 @@ class StarLine extends GameObject{
 		super();
 
 		active = false;
-		animation = new Animation(2, 2, "dustLineAnim", 80);
+		animation = new Animation(2, 2, "dustLineAnim", 80, 3);
 	}
 
 
@@ -27,29 +27,76 @@ class StarLine extends GameObject{
 	}
 }
 
-class Star255 extends GameObject{
+class StarNear extends GameObject{
 
-	Animation animation;
+	float speed = 30;
+	PImage starSprite;
 
-	float speed;
-
-	Star255(){
+	StarNear(){
 		super();
 
-		active = false;
-		animation = new Animation(2, 2, "stars", 80);
+		starSprite = loadImage("data/sprites/star255.png");
 	}
-
 
 	void update(){
 
-		if(position.y > height + 5){
+		image(starSprite, position.x, position.y);
 
-			animation.stop();
-			active = false;
+		if(position.y > height){
+
+			position.y = 0;
 		} else {
 
-			animation.loop(position.x, position.y);
+			position.y += speed * deltaTime;
+		}
+	}
+}
+
+class Star extends GameObject{
+
+	float speed = 25;
+	PImage starSprite;
+
+	Star(){
+		super();
+
+		starSprite = loadImage("data/sprites/star170.png");
+	}
+
+	void update(){
+
+		image(starSprite, position.x, position.y);
+
+		if(position.y > height){
+
+			position.y = 0;
+		} else {
+
+			position.y += speed * deltaTime;
+		}
+	}
+}
+
+class StarFar extends GameObject{
+
+	float speed = 20;
+	PImage starSprite;
+
+	StarFar(){
+		super();
+
+		starSprite = loadImage("data/sprites/star85.png");
+	}
+
+	void update(){
+
+		image(starSprite, position.x, position.y);
+
+		if(position.y > height){
+
+			position.y = 0;
+		} else {
+
 			position.y += speed * deltaTime;
 		}
 	}

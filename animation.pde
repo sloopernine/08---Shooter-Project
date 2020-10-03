@@ -9,11 +9,15 @@ class Animation{
 	int spriteSize;
 	int col;
 	int row;
+	int maxLength;
+	int sFrame;
+	int eFrame;
 	int animationCounter = 0;
 	int animSpeed = 30; // Higher value = slower animation
 
 	boolean playLock = false;
 	boolean loopLock = false;
+	boolean frameLock = false;
 
 	int lastTime = millis();
 
@@ -27,6 +31,8 @@ class Animation{
 		name = fileName;
 		col = columns;
 		row = rows;
+
+		maxLength = col * row - 1;
 
 		animSpeed = animationSpeed;
 
@@ -42,17 +48,34 @@ class Animation{
 
 		image(spriteAnimation[animationCounter], position.x - (spriteSize / 2), position.y - (spriteSize / 2));
 
-		if(animationCounter < (row * col) - 1){
+		if(frameLock){
 
-			if(millis() - lastTime > animSpeed){
+			if(animationCounter < eFrame){
 
-				animationCounter++;
-				lastTime = millis();
+				if(millis() - lastTime > animSpeed){
+
+					animationCounter++;
+					lastTime = millis();
+				}
+			} else {
+
+				animationCounter = sFrame;
+				playLock = false;
 			}
 		} else {
 
-			animationCounter = 0;
-			playLock = false;
+			if(animationCounter < maxLength){
+
+				if(millis() - lastTime > animSpeed){
+
+					animationCounter++;
+					lastTime = millis();
+				}
+			} else {
+
+				animationCounter = 0;
+				playLock = false;
+			}	
 		}
 	}
 
@@ -66,15 +89,44 @@ class Animation{
 		}
 	}
 
+	void play(float xPos, float yPos, int startFrame, int endFrame){
+
+		if(playLock == false){
+
+			position = new PVector(xPos, yPos);
+			
+			if(startFrame < 0){sFrame = 0;} else {sFrame = startFrame;}
+			if(endFrame > col * row){eFrame = col * row;} else { eFrame = endFrame;}
+
+			animationCounter = startFrame;
+			frameLock = true;
+			playLock = true;
+		}
+	}
+
 	void loop(float xPos, float yPos){
 
 		position = new PVector(xPos, yPos);
 		loopLock = true;
 	}
 
+	void loop(float xPos, float yPos, int startFrame, int endFrame){
+
+		position = new PVector(xPos, yPos);
+
+		if(startFrame < 0){sFrame = 0;} else {sFrame = startFrame;}
+		if(endFrame > col * row){eFrame = col * row;} else { eFrame = endFrame;}
+		
+		animationCounter = startFrame;
+		frameLock = true;
+		loopLock = true;
+	}
+
 	void stop(){
 
+		animationCounter = 0;
 		playLock = false;
+		frameLock = false;	
 		loopLock = false;
 	}
 

@@ -1,9 +1,8 @@
-class BulletManager
-{
+class BulletManager{
+
 	//Ansvarig: Johan B
-	// Edited Robin B
+	// Edited/Reworked Robin B
 	Bullet[] bullets;
-	Player player;
 
 	BulletManager(){
 		
@@ -12,11 +11,11 @@ class BulletManager
 
 	void setup(){
 
- 	   bullets = new Bullet[10];
+		bullets = new Bullet[10];
 
 		for (int i = 0; i < bullets.length; ++i){
 
-          	bullets[i] = new Bullet();
+			bullets[i] = new Bullet();
 		}
 	}
 
@@ -31,7 +30,7 @@ class BulletManager
 
 	    	  	boolean hit = enemyManager.checkCollision(bullets[i]);
     	  		
-    	  		if(bullets[i].position.y < -10){
+    	  		if(bullets[i].position.y < -10 || hit == true){
 
     	  			bullets[i].animation.stop();
     	  			bullets[i].active = false;

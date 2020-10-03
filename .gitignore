@@ -10,4 +10,5 @@ application.windows32/
 *.java
 *.pyxel
 *.psd
+*.zip
 !/libraries/**

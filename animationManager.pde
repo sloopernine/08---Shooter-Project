@@ -36,6 +36,7 @@ class AnimationManager{
 
 			zLayers = animation.zLayer;
 		}
+
 		animations.add(animation);
 	}
 

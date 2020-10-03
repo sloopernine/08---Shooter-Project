@@ -6,9 +6,9 @@ class Explosion extends GameObject{
 	Explosion(){
 		super();
 
-		active = false;
-
 		animation = new Animation(4, 4, "expl2", 30);
+
+		active = false;
 	}
 
 	void explode(float xPos, float yPos){

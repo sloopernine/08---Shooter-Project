@@ -1,9 +1,13 @@
+//Ansvarig: Johan B
+// Edited Robin B
+
 class GameManager{
 
+	PFont fontDigital;
+	PFont fontArcade;
+
 	int curScore;
-	int playerHP;
 	boolean gameActive;
-	boolean playerAlive;
 
 	GameManager(){
 
@@ -12,18 +16,19 @@ class GameManager{
 
 	void setup(){
 
-		playerHP = 3;
+		fontDigital = createFont("data/fonts/Digital.ttf", 32);
+		fontArcade = createFont("data/fonts/Arcade.ttf", 32);
+
 		curScore = 0;
 		gameActive = true;
-		playerAlive = true;
+		player.alive = true;
 	}
 
 	void update(){
 
-		if (playerHP <= 0){
+		if (player.alive == false){
 
 			gameActive = false;
-			playerAlive = true;
 		}
 
 		WriteText();
@@ -34,9 +39,10 @@ class GameManager{
 		fill(55, 55, 255);
 		textSize(32);
 		strokeWeight(3);
-		textAlign(CENTER);
-		text("Score:" + curScore, width/2, height-15);
-		text("HP:" + playerHP, 35, height-15);
+		textAlign(LEFT);
+		textFont(fontDigital);
+		text("Score: " + curScore, width/2, height-15);
+		text("Shield: " + player.shield * 50 + "%", 35, height-15);
 	}
 
 	void AddScore(int scoreAdded){

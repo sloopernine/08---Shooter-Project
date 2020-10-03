@@ -6,7 +6,8 @@ class Animation{
 
 	PImage spriteSheet;
 	PImage[] spriteAnimation;
-	int spriteSize;
+	int spriteSizeX;
+	int spriteSizeY;
 	int col;
 	int row;
 	int maxLength;
@@ -36,7 +37,8 @@ class Animation{
 
 		animSpeed = animationSpeed;
 
-		spriteSize = spriteSheet.width / col;
+		spriteSizeX = spriteSheet.width / col;
+		spriteSizeY = spriteSheet.height / row;
 
 		prepareAnimation();
 
@@ -46,7 +48,7 @@ class Animation{
 
 	void update(){
 
-		image(spriteAnimation[animationCounter], position.x - (spriteSize / 2), position.y - (spriteSize / 2));
+		image(spriteAnimation[animationCounter], position.x - (spriteSizeX / 2), position.y - (spriteSizeY / 2));
 
 		if(frameLock){
 
@@ -152,7 +154,7 @@ class Animation{
 		for(int y = 0; y < col; y++){
 			for(int x = 0; x < row; x++){
 
-				spriteAnimation[counter] = spriteSheet.get(x * spriteSize, y * spriteSize, spriteSize, spriteSize);
+				spriteAnimation[counter] = spriteSheet.get(x * spriteSizeX, y * spriteSizeY, spriteSizeX, spriteSizeY);
 
 				counter++;
 			}

@@ -50,7 +50,7 @@ void update()
 
   if (inputShoot && curCooldownTime <= 0){
 
-    bulletManager.spawnBullet(int(position.x), int(position.y+2));
+    bulletManager.spawnBullet(position.x, position.y+2);
     curCooldownTime = cooldownTime;
   }
 

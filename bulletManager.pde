@@ -1,69 +1,69 @@
 class BulletManager
 {
 	//Ansvarig: Johan B
+	// Edited Robin B
 	Bullet[] bullets;
 	Player player;
 
-	BulletManager()
-	{
+	BulletManager(){
+		
 		setup();
 	}
 
-	void setup()
-	{
+	void setup(){
+
  	   bullets = new Bullet[10];
+
+		for (int i = 0; i < bullets.length; ++i){
+
+          	bullets[i] = new Bullet();
+		}
 	}
 
-	void spawnBullet(int x, int y)
-	{
-		for (int i = 0; i < bullets.length; ++i) 
-      	{
-        	if (bullets[i] == null) 
-        	{
-          	bullets[i] = new Bullet(x, y);
-          	//we are done, break/quit the loop.
-          	break;
-       		}
-		}
+	void update(){
 
+		for (int i = 0; i < bullets.length; i++){
+
+			if(bullets[i].active){
+
+       	  		bullets[i].update();
+    	  		bullets[i].draw();
+
+	    	  	boolean hit = enemyManager.checkCollision(bullets[i]);
+    	  		
+    	  		if(bullets[i].position.y < -10){
+
+    	  			bullets[i].animation.stop();
+    	  			bullets[i].active = false;
+    	  		}
+    		}
+		}
 	}
 
-	void draw() 
-	{
-  	//Update bullets
-  		for (int i = 0; i < bullets.length; i++) 
-  		{
-    		if (bullets[i] == null) 
-    		{
-      		//No bullet, skip to the next one.
-      		continue;
-    		}
-    		else
-    		{
-    	  //found a bullet, update it.
-    	  	boolean hit = enemyManager.checkCollision(bullets[i]);
-    	  	if (hit)
-    	  		println("Hit!");
-       	  	bullets[i].update();
-    	  	bullets[i].draw();
-    		}
-    	}
-		
-		for (int i = 0; i < bullets.length; ++i) 
-		{
-			if(bullets[i] == null)
-			{
-				continue;
-			}
-			else
-			{
-				if (bullets[i].position.y < 0 || bullets[i].position.y > height)
-				{
-					bullets[i].animation.stop();
-					bullets[i] = null;
-				}
+	void spawnBullet(float xPos, float yPos){
+
+		Bullet bullet = getFreeBullet();
+
+		if(bullet != null){
+
+			bullet.position = new PVector(xPos, yPos);
+			bullet.active = true;
+		}
+	}
+
+	Bullet getFreeBullet(){
+
+		Bullet returnValue = null;
+
+		for(int i = 0; i < bullets.length; i++){
+
+			if(!bullets[i].active){
+
+				return bullets[i];
 			}
 		}
-  	}
+
+		return returnValue;
+	}
 }
 

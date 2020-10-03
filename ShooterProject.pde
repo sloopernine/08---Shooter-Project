@@ -10,7 +10,7 @@ float time;
 boolean debug = false;
 
 GameManager gameManager;
-StardustManager stardustManager;
+SceneManager sceneManager;
 BulletManager bulletManager;
 EnemyManager enemyManager;
 ExplosionManager explosionManager;
@@ -24,7 +24,7 @@ void setup(){
 	bulletManager = new BulletManager();
 	enemyManager = new EnemyManager();
 	gameManager = new GameManager();
-	stardustManager = new StardustManager();
+	sceneManager = new SceneManager();
 	explosionManager = new ExplosionManager();
 }
 
@@ -35,7 +35,7 @@ void draw(){
 
 	background(0, 0, 0);
 
-	stardustManager.update();
+	sceneManager.update();
 
 	playerChar.update();
 	playerChar.draw();
@@ -46,7 +46,7 @@ void draw(){
 
 	gameManager.update();
 
-	bulletManager.draw();
+	bulletManager.update();
 
 	if(enemyCurCooldown >= 0){
 

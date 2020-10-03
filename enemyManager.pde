@@ -14,6 +14,9 @@ class EnemyManager{
 
 	float xCenter = width/2;
 
+	float enemyCurCooldown = 2;
+	float enemyFiringCooldown = 2;
+
 	EnemyBulletManager enemyBulletManager;
 
 	EnemyManager(){
@@ -57,19 +60,28 @@ class EnemyManager{
 					rowDirection[y] = new PVector(-1, 0);
 				}
 
+				if(enemyCurCooldown <= 0){
+
+					if(enemies[x][y].position.y > 20){
+						if(enemies[x][y].position.x < player.position.x + 20 && enemies[x][y].position.x > player.position.x - 20){
+							
+							enemyBulletManager.spawnBullet(enemies[x][y].position.x, enemies[x][y].position.y);
+							enemyCurCooldown = enemyFiringCooldown;
+						}
+					}
+				}
+
 				enemies[x][y].setDirection(rowDirection[y]);
 				enemies[x][y].update();
 				enemies[x][y].draw();
-				enemyBulletManager.draw();
+				enemyBulletManager.update();
 			}
 		}
-	}
 
-	void shoot(){
+		if(enemyCurCooldown >= 0){
 
-		int shootX = int(random(0, enemiesPerLine));
-		int shootY = int(random(0, numberOfRows));
-		enemyBulletManager.spawnBullet(int(enemies[shootX][shootY].position.x), int(enemies[shootX][shootY].position.y));
+			enemyCurCooldown -= deltaTime; 
+		} 
 	}
 
 	boolean checkCollision(GameObject obj){

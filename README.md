@@ -1,7 +1,7 @@
 # Shooter Project
 
 ## GIF from the game
-<img src="screen2.gif" alt="There is no alt">
+<img src="screen3.gif" alt="There is no alt">
 
 ## Animation system
 -Example how easy it is to add new animations

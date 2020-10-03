@@ -13,7 +13,8 @@ class Bullet extends GameObject
 		velocity = new PVector(0, -1);
 		collider = 10;
 		baseColor = color(0, 255, 0);
-		animation = new Animation(4, 4, "bullet1", 80);
+		animation = new Animation(4, 4, "bullet1", 80, 3);
+			animation.zLayer = 3;
 
 		active = false;
 	}

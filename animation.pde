@@ -23,7 +23,7 @@ class Animation{
 
 	int lastTime = millis();
 
-	Animation(int rows, int columns, String fileName, int animationSpeed){
+	Animation(int rows, int columns, String fileName, int animationSpeed, int zDrawOrder){
 
 		position = new PVector(0, 0);
 
@@ -33,6 +33,7 @@ class Animation{
 		name = fileName;
 		col = columns;
 		row = rows;
+		zLayer = zDrawOrder;
 
 		maxLength = col * row - 1;
 
@@ -130,6 +131,11 @@ class Animation{
 		playLock = false;
 		frameLock = false;	
 		loopLock = false;
+	}
+
+	void UpdatePosition(float xPos, float yPos){
+
+		position = new PVector(xPos, yPos);
 	}
 
 	boolean isPlaying(){

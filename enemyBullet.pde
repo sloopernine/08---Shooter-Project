@@ -12,7 +12,7 @@ class EnemyBullet extends GameObject{
 		velocity = new PVector(0, 1);
 		collider = 26;
 		baseColor = color(0, 255, 0);
-		animation = new Animation(2, 2, "enemyBullet1", 120);
+		animation = new Animation(2, 2, "enemyBullet1", 120, 3);
 
 		active = false;
 	}

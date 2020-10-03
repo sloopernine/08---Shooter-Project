@@ -15,7 +15,7 @@ class Enemy extends Character{
 
 		alive = true;
 
-		animation = new Animation(2, 2, "enemy1Anim", 100);
+		animation = new Animation(2, 2, "enemy1Anim", 100, 4);
 	}
 
 

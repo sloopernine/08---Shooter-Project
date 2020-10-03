@@ -1,60 +1,47 @@
 // Robin B
 class AnimationManager{
 	
-	int arraySize = 200;
+	int zLayers = 1;
 
-	Animation[] animations;
+	ArrayList<Animation> animations;
 
 	AnimationManager(){
 
-		animations = new Animation[arraySize];
+		animations = new ArrayList<Animation>();
 	}
 
 
 	void update(){
 
-		for (int i = 0; i < animations.length; i++){
+		for(int z = 0; z <= zLayers; z++){
 
-			if (animations[i] == null){
-				
-				continue;
-			} else {
+			for (int i = 0; i < animations.size(); i++){
 
-				if(animations[i].playLock || animations[i].loopLock){
+				Animation animation = animations.get(i);
 
-					animations[i].update();
+				if(animation.zLayer == z){
+
+					if(animation.playLock || animation.loopLock){
+
+						animation.update();	
+					}
 				}
 			}
 		}
 	}
 
-	int register(Animation anim){
+	void register(Animation animation){
 
-		for (int i = 0; i < animations.length; i++){
+		if(animation.zLayer > zLayers){
 
-			if (animations[i] == null){
-				
-				animations[i] = anim;
-				// Returns index number if wanted, but not needed for basic functionality
-				return i;
-			}
+			zLayers = animation.zLayer;
 		}
-
-		// If no free slot found
-		return -1;
+		animations.add(animation);
 	}
 
-	void unregister(Animation anim){
 
-		for (int i = 0; i < animations.length; i++){
+	void unregister(Animation animation){
 
-			if (animations[i] == null){
-				
-				continue;
-			} else {
-
-				//TODO FOR THE FUTURE
-			}
-		}
+		animations.remove(animation);
 	}
 }

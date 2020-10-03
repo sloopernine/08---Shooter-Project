@@ -15,6 +15,7 @@ class Animation{
 	int eFrame;
 	int animationCounter = 0;
 	int animSpeed = 30; // Higher value = slower animation
+	int zLayer = 0;
 
 	boolean playLock = false;
 	boolean loopLock = false;
@@ -44,7 +45,6 @@ class Animation{
 
 		animationManager.register(this);
 	}
-
 
 	void update(){
 

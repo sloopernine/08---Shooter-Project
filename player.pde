@@ -18,6 +18,7 @@ class Player extends Character
   Animation animationRight;
   Animation animationCenter;
   Animation animationShield;
+  Animation animationExplode;
 
 public Player(int x, int y)
 {
@@ -31,10 +32,11 @@ public Player(int x, int y)
 
   shield = 2;
 
-  animationShield = new Animation(2, 4, "shieldAnim", 80, 5);
   animationLeft = new Animation(2, 2, "shipLeft", 30, 4);
   animationRight = new Animation(2, 2, "shipRight", 30, 4);
   animationCenter = new Animation(2, 2, "shipCenter", 30, 4);
+  animationShield = new Animation(2, 4, "shieldAnim", 80, 5);
+  animationExplode = new Animation(4, 4, "expl1", 30, 5);
 }
 
 void update()
@@ -89,28 +91,31 @@ void update()
   void draw()
   {
 
-    if(inputMoveLeft){
+    if(alive){
 
-      animationLeft.loop(position.x, position.y);
-    } else {
-      
-      animationLeft.stop();
-    }
+      if(inputMoveLeft){
 
-    if(inputMoveRight){
+        animationLeft.loop(position.x, position.y);
+      } else {
+        
+        animationLeft.stop();
+      }
 
-      animationRight.loop(position.x, position.y);
-    } else {
+      if(inputMoveRight){
 
-      animationRight.stop();
-    }
+        animationRight.loop(position.x, position.y);
+      } else {
 
-    if(!inputMoveLeft && !inputMoveRight){
+        animationRight.stop();
+      }
 
-      animationCenter.loop(position.x, position.y);
-    } else {
+      if(!inputMoveLeft && !inputMoveRight){
 
-      animationCenter.stop();
+        animationCenter.loop(position.x, position.y);
+      } else {
+
+        animationCenter.stop();
+      }
     }
   }
 
@@ -119,9 +124,12 @@ void update()
 
     boolean hit = super.collision(obj);
 
-    if(hit){
+    if(hit && alive){
 
       GetDamage();
+    } else {
+
+      hit = false;
     }
 
     return hit;
@@ -134,6 +142,14 @@ void update()
 
       animationShield.play(position.x, position.y);
       shield -= 1;
+    } else {
+
+      animationLeft.stop();
+      animationRight.stop();
+      animationCenter.stop();
+      animationExplode.play(position.x, position.y);
+
+      alive = false;
     }
   }
 }

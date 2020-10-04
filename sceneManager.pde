@@ -12,7 +12,7 @@ class SceneManager{
 
 	SceneManager(){
 
-		setupStarLines();
+		//setupStarLines();
 		setupStarField();
 	}
 
@@ -20,7 +20,7 @@ class SceneManager{
 	void update(){
 
 		updateStarField();
-		starLineUpdate();
+		//starLineUpdate();
 	}
 
 	void setupStarField(){

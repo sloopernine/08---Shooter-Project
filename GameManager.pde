@@ -28,6 +28,10 @@ class GameManager{
 
 		if (player.alive == false){
 
+			textFont(fontArcade);
+			textSize(70);
+			textAlign(CENTER);
+			text("GAME OVER", width/2, height/2);
 			gameActive = false;
 		}
 

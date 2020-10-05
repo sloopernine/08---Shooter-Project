@@ -4,7 +4,7 @@ boolean inputShoot;
 
 boolean gravityOn = false;
 PVector vectorInput = new PVector(0,0);
-
+//Johan B.
 void keyPressed()
 {
 	if (key == 'a'){

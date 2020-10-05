@@ -8,6 +8,7 @@ class Player extends Character
 	float xInput = 0;
 	float yInput = 0;
 	float v = 1;
+  float vectorMag = 15f;
 
   float curCooldownTime;
   float cooldownTime = 0.45;
@@ -69,7 +70,7 @@ void update()
   
   //Creates a acceleration vector with player input and sets the magnitude of that vector.
   PVector acceleration = new PVector(xInput, yInput);
-  acceleration.setMag(15f);
+  acceleration.setMag(vectorMag);
 
   //Deceleration if no input is registered.
   if (xInput == 0)

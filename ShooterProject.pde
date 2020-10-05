@@ -37,7 +37,7 @@ void draw(){
 	long currentTime = millis();
 	deltaTime = (currentTime - time) * 0.001f;
 
-	background(0, 0, 0);
+	background(0, 0, 20);
 
 	sceneManager.update();
 

@@ -62,7 +62,7 @@ class EnemyManager{
 
 				if(enemyCurCooldown <= 0){
 
-					if(enemies[x][y].position.y > 20){
+					if(enemies[x][y].position.y > 20 && enemies[x][y].alive){
 						if(enemies[x][y].position.x < player.position.x + 20 && enemies[x][y].position.x > player.position.x - 20){
 							
 							enemyBulletManager.spawnBullet(enemies[x][y].position.x, enemies[x][y].position.y);
